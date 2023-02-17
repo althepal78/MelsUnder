@@ -1,0 +1,56 @@
+﻿@model MUC.Models.ViewModels.ProductVM
+
+<form method="post" enctype="multipart/form-data" asp-action="Create" asp-controller="Product">
+    <div class="validation" asp-validation-summary="All"></div>
+    <div class="title">Create Product</div>
+    <div >
+        <input asp-for="Product.Title" id="Title"  type="text"  />
+        <label asp-for="Product.Title" for="Title" >Product Name</label>
+    </div>
+
+    <div >
+        <input asp-for="Product.Description" id="Description"  type="text"  />
+        <label asp-for="Product.Description" for="Description" >Description</label>
+    </div>
+    <div >
+        <input asp-for="Product.Author" id="Author"  type="text"  />
+        <label asp-for="Product.Author" for="Author" >Author</label>
+    </div>
+    <div >
+        <input asp-for="Product.Price" id="Price"  type="text"  />
+        <label asp-for="Product.Price" for="Price">Price</label>
+    </div>
+    <div >
+        <input type="file"  name="file" asp-for="Product.ImgURL" />
+        <label asp-for="Product.ImgURL" >Image</label>
+    </div>
+
+    <div >
+        <label asp-for="Product.Category.Name"></label>
+        <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList">
+            <option disabled selected>--Select Category</option>
+        </select>
+    </div><br />
+    <div >
+        <button type="submit" class="button glow-effect">Create
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </button>
+        <a class="button glow-effect" role="button" asp-controller="Product" asp-action="Index">Back
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </a>
+    </div>
+</form>
+
+
+@section Scripts{
+    @{
+
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

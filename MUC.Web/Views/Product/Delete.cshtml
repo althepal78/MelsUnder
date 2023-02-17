@@ -1,0 +1,39 @@
+﻿@model Product
+
+<form method="post" asp-action="DeleteProduct">
+    <input hidden asp-for="Id" />
+    <div class="val" asp-validation-summary="All"></div>
+    <div>
+        <div>
+            <h2>Delete Product</h2>
+        </div>
+        
+        <div>
+            <label asp-for="Title"></label>
+            <input asp-for="Title" />
+        </div>
+        <div>
+            <label asp-for="Price"></label>
+            <input asp-for="Price" />
+        </div>
+        <br />
+        <button class="button glow-effect" type="submit">Delete
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </button>
+        <a class="button glow-effect" asp-controller="Product" asp-action="Index">Back
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </a>
+    </div>
+
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

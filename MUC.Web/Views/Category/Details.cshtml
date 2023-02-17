@@ -1,0 +1,13 @@
+﻿@model Category
+
+<div class="details">
+   <div class="detail-type"> Category Details</div>
+    <div> Category Name: <span class="puerto-rico">@Model.Name</span>  </div>
+    <div> Your Display order is: <span class="puerto-rico"> @Model.DisplayOrder</span></div>
+    <a class="button glow-effect" style="width: 20rem;margin:0 auto;" asp-controller="Category" asp-action="Index">Back
+        <svg class="glow-container">
+            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+        </svg>
+    </a>
+</div>

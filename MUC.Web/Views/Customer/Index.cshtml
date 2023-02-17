@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Product>
+<div class="main-section">
+    <p class="main-paragraph">
+        Welcome to Mely's Underground Cuisine. We will be working on a catering business soon.
+        For now these are some of the meals we make on random days. We also make sides like platanos,
+        in English plantains. Not only that we make coquito a <span> Puerto Rican </span>adult beverage. That is something
+        we sell on holidays of Thanksgiving, Christmas,  and new years.
+    </p>
+    <br />
+    @{
+        @if (Model != null)
+        {
+            <div class="card-section">
+                <div id="cards">
+                    @foreach (var meal in Model)
+                    {
+                        if (meal != null)
+                        {
+                            @if (meal.Category.Name == "Meal")
+                            {
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-image">
+                                            <img src="@meal.ImgURL" alt="@meal.Title">
+                                        </div>
+                                        <div class="card-info-wrapper">
+                                            <div class="card-info">
+                                                <div class="card-info-title">
+                                                    <h3 class="meal-title">@meal.Title</h3>
+                                                    <p class="description">@meal.Description</p>
+                                                    <p><small class="text-info">by @meal.Author</small></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

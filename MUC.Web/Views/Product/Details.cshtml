@@ -1,0 +1,18 @@
+﻿@model Product
+
+<div class="details">
+    <div class="detail-type">Product Title  </div>
+    <div>Author: <span class="puerto-rico">@Model.Author</span>  </div> 
+    <div>Price: <span class="puerto-rico">@Model.Price.ToString("C")</span>  </div>
+    <div>Product Name: <span class="puerto-rico">@Model.Title</span>  </div>
+    <div>Category: <span class="puerto-rico">@Model.Category.Name</span>  </div>
+    <div> Description: <span class="puerto-rico">  @Model.Description</span> </div>
+    <img src="@Model.ImgURL" style="width:30%;" />
+    <br />
+    <a class="button glow-effect" asp-controller="Product" asp-action="Index"> back
+        <svg class="glow-container">
+            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+        </svg>
+    </a>
+</div>

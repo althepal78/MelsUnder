@@ -1,0 +1,65 @@
+﻿@model List<Product>
+
+<div>
+    <div>
+        <div class="heading-items">
+            <h2>Product List</h2>
+        
+            <a class="button glow-effect" asp-controller="Product" asp-action="Create">Create New Product
+                <svg class="glow-container">
+                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="table-link" asp-controller="Product" asp-action="Details" asp-route-id="@obj.Id">@obj.Title</a>
+                        </td>
+                        <td>@obj.Price.ToString("C")</td>
+                        <td>
+                            @obj.Author
+                        </td>
+                        <td>@obj.Category.Name</td>
+                        <td>
+                            <div role="group">
+                               
+                                <a class="button glow-effect" asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id">  Edit
+                                    <svg class="glow-container">
+                                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                                    </svg>
+                                </a>
+                                <a class="button glow-effect" asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"> Delete
+                                    <svg class="glow-container">
+                                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

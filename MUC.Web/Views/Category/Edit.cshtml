@@ -1,0 +1,38 @@
+﻿@model Category
+
+<form method="post" asp-action="Edit" asp-controller="Category">
+    <div>
+        <div>
+            <h2 class="title">Edit Category</h2>
+        </div> 
+        <div class="validation" asp-validation-summary="All"></div>
+        <br />
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+        </div>
+        <div>
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" />
+        </div>
+        <br />
+        <button class="button glow-effect" type="submit">Update
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </button>
+        <a class="button glow-effect" asp-controller="Category" asp-action="Index">Back
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </a>
+    </div>
+
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

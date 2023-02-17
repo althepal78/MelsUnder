@@ -1,0 +1,150 @@
+﻿@import "_variables";
+
+
+@media (max-width: 915px) {
+
+    .navbar {
+        .link {
+            color: white;
+        }
+
+        .logout {
+            padding: 0;
+            margin: 0;
+            transform: translateY(-3rem);
+        }
+    }
+
+    table {
+        min-width: 45rem;
+        font-size: medium;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding-bottom: 5rem;
+
+        .special {
+            .dropdown {
+                position: relative;
+
+                .dropdown-menu {
+
+                    .dropdown-links {
+                        padding-left: 1.2rem;
+                        margin-left: 1.4rem;
+
+                        a {
+                            font-size: clamp(.1rem, 50vw, 1rem);
+                            width: 100%;
+                            color: $color-pink;
+
+                            &:hover {
+                                color: black;
+                                background: $color-pink;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .dropdown.active > .dropdown-menu {
+                opacity: 1;
+            }
+        }
+
+        .hamburger {
+            display: inline;
+            color: $color-pink;
+            z-index: 4;
+            top: 1.5rem;
+        }
+
+        .navbar-links {
+            display: none;
+        }
+
+        .navbar-links.active {
+            color: $color-pink;
+            display: block;
+            width: 95vw;
+            height: 60vh;
+            z-index: 3;
+            margin: auto;
+            justify-content: center;
+            padding-top: 10rem;
+
+            ul {
+                li {
+                    display: block;
+                }
+            }
+        }
+
+        .logo {
+            width: 5rem;
+            border-radius: 50%;
+            height: 100%;
+            margin-left: 1.5rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .logo {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            margin-left: 1.5rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .logout {
+        padding: 0;
+        margin: 0;
+        transform: translateY(-4rem);
+    }
+}
+
+#cards {
+    font-size: clamp(.4rem, 10vw, 1rem);
+}
+
+
+
+tables {
+    min-width: .5rem;
+    font-size: small;
+
+    thead {
+        tr {
+            th {
+                padding: .15rem .1rem;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                padding: .15rem .1rem;
+
+                a {
+                    color: $color-white;
+                    padding: .1rem;
+                    text-decoration: underline dotted;
+                }
+            }
+        }
+    }
+}

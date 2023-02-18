@@ -86,10 +86,9 @@ namespace MUC.Web.Controllers.Admin
                     }
                     obj.Product.ImgURL = @"\images\products\" + fileName + extension;
                 }
+           
 
-                obj.Product.Category.Name = _db.Categories.FirstOrDefault(n => n.Id  == obj.Product.CategoryId).Name;
-
-                Console.WriteLine(obj.Product.Category.Name);
+                //Console.WriteLine(obj.Product.Category.Name);
                 _db.Products.Add(obj.Product);
                 _db.SaveChanges();
                 TempData["success"] = "Product Was Created Successfully";
@@ -106,15 +105,14 @@ namespace MUC.Web.Controllers.Admin
         {
             ProductVM productVM = new()
             {
-                Product = new(),
+                Product = _db.Products.Include(c => c.Category).FirstOrDefault(i => i.Id == id),
                 CategoryList = _db.Categories.Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
                 }),
             };
-
-            productVM.Product = _db.Products.Include(c => c.Category).FirstOrDefault(u => u.Id == id);
+                        
             return View(productVM);
         }
 
@@ -122,7 +120,14 @@ namespace MUC.Web.Controllers.Admin
         [ValidateAntiForgeryToken]
         public IActionResult Edit(ProductVM obj, IFormFile? file)
         {
-            Console.WriteLine(file + "****************************");
+            var product = _db.Products.AsNoTracking().Include(c=> c.Category).FirstOrDefault(i => i.Id == obj.Product.Id);
+            if(product == null)
+            {
+                Console.WriteLine("sshit is null bitches");
+            }
+            Console.WriteLine(" some shit and the product: " + product.ImgURL);
+
+
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath;

@@ -1,18 +1,28 @@
-﻿@model MenuVM;
+﻿@model MUC.Models.ViewModels.MenuVM;
 
-<form asp-controller="Menu" asp-action="Create" asp-route-id="@Model.Id" style="width:100%; color:white; margin: 0 40%;">
+<form asp-controller="Menu" asp-action="Create" style="width:100%; color:white; margin: 0 40%;">
     <div asp-validation-summary="All" class="validation"></div>
     <h1>Details</h1>
-    <p>@Model.Title</p>
+    @if (Model.OneProduct is not null)
+    {
+        <img style="width:20rem;" src="@Model.OneProduct.ImgURL" />
+        <h4>@Model.OneProduct.Title</h4>
+    }
 
-    <input type="date" id="date" />
+    <input asp-for="DateColumn" type="date" id="date" />
     <br />
     <br />
-    <button class="button glow-effect" type="submit" role="button">Add to Menu
+    <button class="button glow-effect" type="submit" role="button">
+        Add to Menu
         <svg class="glow-container">
             <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
             <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
         </svg>
     </button>
 </form>
+@section Scripts{
+    @{
 
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

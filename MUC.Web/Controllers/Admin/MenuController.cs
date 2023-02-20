@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MUC.DataAccess.Data;
 using MUC.Models;
+using MUC.Models.ViewModels;
 using MUC.Utilities;
 using System.Data;
 
@@ -23,80 +24,50 @@ namespace MUC.Web.Controllers.Admin
         [AllowAnonymous]
         public ActionResult DailyMenu()
         {
-            var products = _db.Products.Include(c => c.Category).ToList();
-            return View(products);
+
+            return View();
         }
 
         // GET: MenuController
 
         public ActionResult Index()
         {
-            var products = _db.Products.Include(c=> c.Category).ToList();
+            var products = _db.Products.Include(c => c.Category).ToList();
             return View(products);
         }
-             
+
 
         // GET: MenuController/Create
         public ActionResult Create(Guid id)
         {
-            var product = _db.Products.Include(c => c.Category).FirstOrDefault(i => i.Id == id);
-            //Console.WriteLine("is there a product:  " + product.Author);
-            return View(product);
+
+            MenuVM vm = new MenuVM
+            {
+                ProductId = id,
+                OneProduct = _db.Products.FirstOrDefault(f => f.Id == id),
+            };
+
+            return View(vm);
         }
 
         // POST: MenuController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product, DateTime date)
+        public ActionResult Create(MenuVM vm)
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Date","Something is missing");
-                return View(product);
+                return View(vm);
             }
+            Console.WriteLine(vm.DateColumn + " what goes ***********************");
+
+            if(!vm.ID.Equals(null))
+            {
+
+            }
+            
             return RedirectToAction("Index");
         }
 
-        // GET: MenuController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: MenuController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: MenuController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: MenuController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    }
+    } 
 }

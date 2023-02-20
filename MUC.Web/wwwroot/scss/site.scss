@@ -55,7 +55,7 @@ header {
     span {
         -webkit-text-fill-color: transparent;
         color: transparent;
-        background: $color-PuertoRico;
+        background: $puertorico-color;
         -webkit-background-clip: text;
     }
 }
@@ -88,7 +88,7 @@ footer {
     .puerto-rico {
         -webkit-text-fill-color: transparent;
         color: transparent;
-        background: $color-PuertoRico;
+        background: $puertorico-color;
         -webkit-background-clip: text;
         font-size: clamp(.4rem, 20vw, 2rem);
     }

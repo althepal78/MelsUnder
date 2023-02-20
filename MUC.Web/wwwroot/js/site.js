@@ -70,20 +70,43 @@ try {
     console.log("Card beauty Error: " + err);
 }
 
+
+// this is for the date to be today's date lets see if it works
+window.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById("date").valueAsDate = new Date();
+});
+
 /// this is for the animation on the buttons since I have changed them all but the ones inside the navigation section
-try {
-    (function setGlowEffectRx() {
-        const glowEffects = document.querySelectorAll(".glow-effect");
+//try {
+//    (function setGlowEffectRx() {
+//        const glowEffects = document.querySelectorAll(".glow-effect");
 
-        glowEffects.forEach((glowEffect) => {
-            const glowLines = glowEffect.querySelectorAll("rect");
-            const rx = getComputedStyle(glowEffect).borderRadius;
+//        glowEffects.forEach((glowEffect) => {
+//            const glowLines = glowEffect.querySelectorAll("rect");
+//            const rx = getComputedStyle(glowEffect).borderRadius;
 
-            glowLines.forEach((line) => {
-                line.setAttribute("rx", rx);
-            });
-        });
-    })();
-} catch (er) {
-    console.log("The Error is: " + er)
-}
+//            glowLines.forEach((line) => {
+//                line.setAttribute("rx", rx);
+//            });
+//        });
+//    })();
+//} catch (er) {
+//    console.log("The Error is: " + er)
+//}
+//// for the navbar
+//try {
+//    (function setGlowEffectRx() {
+//        const glowEffects = document.querySelectorAll(".nav-glow-effect");
+
+//        glowEffects.forEach((glowEffect) => {
+//            const glowLines = glowEffect.querySelectorAll("rect");
+//            const rx = getComputedStyle(glowEffect).borderRadius;
+
+//            glowLines.forEach((line) => {
+//                line.setAttribute("rx", rx);
+//            });
+//        });
+//    })();
+//} catch (er) {
+//    console.log("The Error is: " + er)
+//}

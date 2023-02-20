@@ -94,7 +94,7 @@ header {
   z-index: 10;
 }
 .navbar .logo {
-  width: 8rem;
+  width: 10rem;
   border-radius: 50%;
   height: 100%;
   margin-left: 1.5rem;
@@ -608,7 +608,7 @@ tables tbody tr td a {
   font-size: 1.5rem;
   font-family: inherit;
   font-weight: 700;
-  color: darkorange;
+  color: #ff9ff6;
   background-color: black;
   padding: 0.25rem;
   border: 0;
@@ -618,13 +618,13 @@ tables tbody tr td a {
 }
 
 .glow-effect {
-  --glow-line-color: #fff;
+  --glow-line-color: #980bcf;
   --glow-line-thickness: 2px;
-  --glow-line-length: 20px;
-  --glow-blur-color: #fff;
+  --glow-line-length: 30px;
+  --glow-blur-color: darkorange;
   --glow-blur-size: 5px;
   --glow-offset: 0px;
-  --animation-speed: 1200ms;
+  --animation-speed: 1.2s;
   /* do not change, used for calculations */
   --container-offset: 100px;
   position: relative;

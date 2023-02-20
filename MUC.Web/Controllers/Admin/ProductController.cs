@@ -121,13 +121,11 @@ namespace MUC.Web.Controllers.Admin
         public IActionResult Edit(ProductVM obj, IFormFile? file)
         {
             var product = _db.Products.AsNoTracking().Include(c=> c.Category).FirstOrDefault(i => i.Id == obj.Product.Id);
-            if(product == null)
+            if(product== null)
             {
-                Console.WriteLine("sshit is null bitches");
+                ModelState.AddModelError("product", "Id is invalid");
+                return View(obj);
             }
-            Console.WriteLine(" some shit and the product: " + product.ImgURL);
-
-
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
@@ -151,7 +149,10 @@ namespace MUC.Web.Controllers.Admin
                     }
                     obj.Product.ImgURL = @"\images\products\" + fileName + extension;
                 }
-
+                if(file == null)
+                {
+                    obj.Product.ImgURL = product.ImgURL;
+                }   
                 _db.Products.Update(obj.Product);
 
                 _db.SaveChanges();

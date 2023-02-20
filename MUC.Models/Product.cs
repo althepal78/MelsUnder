@@ -24,7 +24,7 @@ namespace MUC.Models
         public double Price { get; set; }
 
         [ValidateNever]
-        public string ImgURL { get; set; }
+        public string? ImgURL { get; set; }
 
         
         public Guid CategoryId { get; set; }

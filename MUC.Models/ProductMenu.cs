@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MUC.Models.Validations;
 
 namespace MUC.Models
 {

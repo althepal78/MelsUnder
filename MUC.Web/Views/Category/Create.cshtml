@@ -3,12 +3,12 @@
 <form method="post" asp-action="Create" asp-controller="Category" class="form">
     <div class="validation" asp-validation-summary="All"></div>
     <div class="title">Create Category</div>
-    <div class="input-container ic1">
+    <div >
         <input asp-for="Name" id="Name"  type="text" />
         <label asp-for="Name" for="Name" >Category Name</label>
     </div>
 
-    <div class="input-container ic2">
+    <div >
         <input asp-for="DisplayOrder" id="DisplayOrder"   type="number" />
         <label asp-for="DisplayOrder" for="DisplayOrder">Display Order</label>
     </div>

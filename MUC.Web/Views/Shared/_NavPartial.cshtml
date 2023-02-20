@@ -6,52 +6,89 @@
 <div class="logo">
     <img src="/images/melysSmallLogo.jpg" class="logo" alt="brand logo" />
 </div>
-<div class="navbar-links" >
-    <ul> 
-        <li class="hl">
-            <a class="nav-button" asp-controller="Customer"
-               asp-action="Index"
-               class="link"> Home  </a>
+<div class="navbar-links">
+    <ul>
+        <li>
+            <a class="button glow-effect"
+               asp-controller="Customer"
+               asp-action="Index">
+                Home
+                <svg class="glow-container">
+                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                </svg>
+            </a>
+
         </li>
-        <li class="hl">
-            <a asp-controller="Menu"
-               asp-action="Index"
-               class="link"> Daily Menu  </a>
+        <li>
+            <a class="button glow-effect"                
+               asp-controller="Menu"
+               asp-action="DailyMenu">
+                Daily Menu
+                <svg class="glow-container">
+                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                </svg>
+            </a>
         </li>
         @if (User.IsInRole(StaticDetails.Role_Admin))
         {
-            <li  class="logout hl">
-                <a asp-controller="Login"
-                   asp-action="Logout"
-                   class="link">Log Out</a>
-            </li>
+                <li>
+                    <a class="button glow-effect"
+               asp-controller="Menu"
+               asp-action="Index">
+                        Menu Creator
+                        <svg class="glow-container">
+                            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a class="button glow-effect logout" asp-controller="Login"
+               asp-action="Logout">
+                        Log Out
+                        <svg class="glow-container">
+                            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                        </svg>
+                    </a>
+                </li>
 
-            <li class="special"  data-special>
-                <div class="dropdown information-grid" data-dropdown>
-                    <button data-dropdown-button  href="#">Dashboard &gt;</button>
+                <li class="special" data-special>
+                    <div class="dropdown information-grid" data-dropdown>
+                        <button data-dropdown-button href="#">Dashboard &gt;</button>
 
-                    <div class="dropdown-menu">
-                        <div class="dropdown-links">
-                            <a asp-controller="Category"
-                               asp-action="Index">Category &gt;</a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-links">
+                                <a asp-controller="Category" asp-action="Index">
+                                    Category &gt;
+                                </a>
 
-                            <a asp-controller="Product"
-                               asp-action="Index">Food/Drinks &gt;</a>
+                                <a   asp-controller="Product" asp-action="Index">
+                                    Food/Drinks &gt; 
+                                </a>
 
-                            <a asp-controller="Menu"
-                               asp-action="Index">Menu Creater &gt;</a>
+                                <a   asp-controller="Menu"  asp-action="Index">
+                                    Menu Creater &gt; 
+                                    </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
+                </li>
         }
         else
         {
-            <li class="hl">
-                <a asp-controller="Login"
-                   asp-action="Login"
-                   class="link"> Login</a>
-            </li>
+                <li>
+                    <a class="button glow-effect" asp-controller="Login"
+               asp-action="Login">
+                        Login
+                        <svg class="glow-container">
+                            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                        </svg>
+                    </a>
+                </li>
         }
     </ul>
 </div>

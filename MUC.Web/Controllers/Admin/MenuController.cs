@@ -60,12 +60,13 @@ namespace MUC.Web.Controllers.Admin
                 return View(vm);
             }
             Console.WriteLine(vm.DateColumn + " what goes ***********************");
-
-            if(!vm.ID.Equals(null))
-            {
-
-            }
             
+            if(vm.DateColumn == null) {
+                vm.DateColumn = DateOnly.FromDateTime(DateTime.Now);
+            }
+            Menu NewMenu = new Menu();
+            NewMenu.DateColumn =  vm.DateColumn;
+
             return RedirectToAction("Index");
         }
 

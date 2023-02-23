@@ -3,6 +3,7 @@
 <form asp-controller="Menu" asp-action="Create" style="width:100%; color:white; margin: 0 40%;">
     <div asp-validation-summary="All" class="validation"></div>
     <h1>Details</h1>
+    <input hidden asp-for="ProductId" />
     @if (Model.OneProduct is not null)
     {
         <img style="width:20rem;" src="@Model.OneProduct.ImgURL" />

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MUC.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230213200420_allgood")]
-    partial class allgood
+    [Migration("20230222195953_dateonlyToMenuModel")]
+    partial class dateonlyToMenuModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,7 @@ namespace MUC.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateColumn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.HasKey("ID");
 
@@ -79,7 +79,6 @@ namespace MUC.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImgURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")

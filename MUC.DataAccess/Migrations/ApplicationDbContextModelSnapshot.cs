@@ -51,7 +51,7 @@ namespace MUC.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateColumn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.HasKey("ID");
 

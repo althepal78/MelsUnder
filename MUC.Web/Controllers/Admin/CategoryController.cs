@@ -22,7 +22,7 @@ namespace MUC.Web.Controllers.Admin
         public IActionResult Index()
         {
             IEnumerable<Category> objCategoryList = _db.Categories.ToList();
-            return View(objCategoryList);
+            return View(objCategoryList.OrderBy(c => c.DisplayOrder));
         }
 
         // get action

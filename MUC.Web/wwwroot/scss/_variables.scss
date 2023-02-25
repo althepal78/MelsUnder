@@ -1,17 +1,9 @@
-﻿
-$facebook-color: #1092f4;
-$twitter-color: #1d9bf0; 
-$google-color: linear-gradient( to right, #4285f4, #db4437, #f4b400, #0f9d58 ); // Google
-$instagram-color: linear-gradient( #405de6, #5b51d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80 ); // Instagram
-$linkedin-color: #0a66c2; // LinkedIn
-$tiktok-color: linear-gradient(to right, #010101, #69c9d0, #fff, #ee1d52); // TikTok
-$puertorico-color: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
-
-$color-pink: #ff9ff6;
-$color-white: whitesmoke;
-
-$bg-color: rgb(20, 20, 20);
-$card-color: rgb(23, 23, 23);
-
-$primary-color: black;
-$accent-color: #ff9ff6;
+﻿// border for seeing what is where
+$border: 1px solid hsl(187, 100%, 50%);
+:root {
+    // colors
+    --background: #005B60;   
+    --accent: #ff9ff6;
+    --text: #fff;
+    --dark: #000;
+}

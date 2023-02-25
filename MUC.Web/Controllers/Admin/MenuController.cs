@@ -66,6 +66,8 @@ namespace MUC.Web.Controllers.Admin
             }
             Menu NewMenu = new Menu();
             NewMenu.DateColumn =  vm.DateColumn;
+            Console.WriteLine("ID: " + vm.ID + " Date: " + vm.DateColumn + " Product" + vm.OneProduct);
+           
 
             return RedirectToAction("Index");
         }

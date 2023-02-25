@@ -1,0 +1,14 @@
+﻿@import "_variables";
+
+nav {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+
+    .nav-container {
+        .brand-logo {
+            width: clamp(3rem, 20vw, 14rem);
+            border-radius: 50%;
+        }
+    }
+}

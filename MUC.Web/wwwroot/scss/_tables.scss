@@ -1,0 +1,57 @@
+﻿@import "_variables";
+
+.centerdiv {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: clamp(.9rem, 5vw, 1.5rem);
+    min-width: 25rem;
+    border-radius: .5rem .5rem 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, .15);
+
+    thead {
+        tr {
+            background-color: #005B60;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+
+            th {
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: .063rem solid #a7a7a7ff;
+
+            td {
+            }
+        }
+
+        tr:nth-of-type(even) {
+            background-color: #e4e4e4;
+            color: #005B60;
+            font-weight: 500;
+
+            a {
+                color: #005B60;
+            }
+        }
+
+        tr:last-of-type {
+            border-bottom: .14rem solid #005B60;
+        }
+    }
+
+    th,
+    td {
+        padding: .75rem .938rem;
+    }
+}

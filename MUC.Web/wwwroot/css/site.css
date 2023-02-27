@@ -1,10 +1,13 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 :root {
-  --background: #005B60;
+  --background: #fff;
   --accent: #ff9ff6;
-  --text: #fff;
-  --dark: #000;
+  --text: #000;
+  --dark: brown;
+  --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
+  --body-font-size: clamp(.5rem, 2vw, 2rem);
+  --nav-font-size: clamp(.4rem, 2vw, 1.2rem);
 }
 
 *,
@@ -21,29 +24,169 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.1rem, 2vw + 1rem, 1.4rem);
+  font-size: var(--body-font-size);
   line-height: 1.55;
   background: var(--background);
   color: var(--text);
 }
 
-a {
+a,
+a:visited {
   text-decoration: none;
+  color: var(--text);
+}
+
+.main-paragraph {
+  padding: 1rem;
+  text-indent: 2.5rem;
+}
+.main-paragraph span {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background: var(--dark);
+  -webkit-background-clip: text;
 }
 
 :root {
-  --background: #005B60;
+  --background: #fff;
   --accent: #ff9ff6;
-  --text: #fff;
-  --dark: #000;
+  --text: #000;
+  --dark: brown;
+  --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
+  --body-font-size: clamp(.5rem, 2vw, 2rem);
+  --nav-font-size: clamp(.4rem, 2vw, 1.2rem);
 }
 
 nav {
+  width: 100%;
+}
+nav .nav-container {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
 }
-nav .nav-container .brand-logo {
-  width: clamp(3rem, 20vw, 14rem);
+nav .nav-container .brand-logo img {
+  width: clamp(4rem, 20vw, 12rem);
   border-radius: 50%;
+}
+nav .nav-container .nav-links {
+  display: flex;
+  justify-content: end;
+  margin-right: 1.5rem;
+}
+nav .nav-container .nav-links ul {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+nav .nav-container .nav-links ul li {
+  display: inline;
+  margin: 0 2rem;
+  list-style-type: none;
+}
+nav .nav-container .nav-links ul li a:hover {
+  background-color: var(--text);
+  color: var(--dark);
+  transition: 1s ease-in-out;
+}
+nav .nav-container .nav-links ul li .drop-down-menu {
+  position: relative;
+  font-size: var(--nav-font-size);
+}
+nav .nav-container .nav-links ul li .drop-down-menu button {
+  color: brown;
+  font-size: var(--body-font-size);
+}
+nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links {
+  display: grid;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.8s ease-in-out;
+  top: calc(100% + 0.2rem);
+  left: 0.1rem;
+  width: 98%;
+}
+nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a {
+  color: var(--accent);
+  padding: 0.2rem;
+}
+nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a:hover {
+  color: var(--text);
+  background-color: var(--dark);
+}
+nav .nav-container .nav-links ul li .drop-down-menu .is-visible {
+  display: grid;
+  width: 98%;
+  opacity: 1;
+  position: absolute;
+  top: calc(100% + 0.2rem);
+  left: 0.1rem;
+  z-index: 100;
+  color: var(--text);
+  pointer-events: auto;
+  transform: translateY(0.2rem);
+  transition: all 0.8s ease-in-out;
+  background-color: var(--background);
+  box-shadow: 4px 4px 3px var(--accent);
+  background-color: #000000;
+}
+nav .nav-container .nav-links ul li .drop-down-menu .is-visible a {
+  padding: 0.2rem;
+}
+nav .nav-container .nav-links ul li .drop-down-menu .is-visible a:hover {
+  color: var(--background);
+}
+
+:root {
+  --background: #fff;
+  --accent: #ff9ff6;
+  --text: #000;
+  --dark: brown;
+  --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
+  --body-font-size: clamp(.5rem, 2vw, 2rem);
+  --nav-font-size: clamp(.4rem, 2vw, 1.2rem);
+}
+
+.centerdiv {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: clamp(0.9rem, 5vw, 1.5rem);
+  min-width: 25rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);
+}
+table thead tr {
+  background-color: #005B60;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+table tbody tr {
+  border-bottom: 0.063rem solid #a7a7a7;
+}
+table tbody tr:nth-of-type(even) {
+  background-color: #e4e4e4;
+  color: #005B60;
+  font-weight: 500;
+}
+table tbody tr:nth-of-type(even) a {
+  color: #005B60;
+}
+table tbody tr:last-of-type {
+  border-bottom: 0.14rem solid #005B60;
+}
+table th,
+table td {
+  padding: 0.75rem 0.938rem;
 }

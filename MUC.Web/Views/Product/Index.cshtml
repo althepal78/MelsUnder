@@ -1,15 +1,15 @@
 ﻿@model List<Product>
 
-<div>
+<div class="centerdiv">
     <div>
         <div class="heading-items">
             <h2>Product List</h2>
         
             <a class="button glow-effect" asp-controller="Product" asp-action="Create">Create New Product
-                <svg class="glow-container">
+              @*  <svg class="glow-container">
                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                     <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                </svg>
+                </svg>*@
             </a>
         </div>
     </div>
@@ -43,16 +43,16 @@
                             <div role="group">
                                
                                 <a class="button glow-effect" asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id">  Edit
-                                    <svg class="glow-container">
+                                   @* <svg class="glow-container">
                                         <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                                         <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                    </svg>
+                                    </svg>*@
                                 </a>
                                 <a class="button glow-effect" asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"> Delete
-                                    <svg class="glow-container">
+                                   @* <svg class="glow-container">
                                         <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                                         <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                    </svg>
+                                    </svg>*@
                                 </a>
                             </div>
                         </td>

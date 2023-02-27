@@ -1,9 +1,19 @@
-﻿// border for seeing what is where
-$border: 1px solid hsl(187, 100%, 50%);
+﻿//--background: #005B60
+//;
+//--accent: #ff9ff6
+//;
+//--text: #fff
+//;
+//--dark: #000
+//;
 :root {
     // colors
-    --background: #005B60;   
+    --background: #fff;
     --accent: #ff9ff6;
-    --text: #fff;
-    --dark: #000;
+    --text: #000;
+    --dark: brown;
+    --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
+    //font-sizes
+    --body-font-size: clamp(.5rem, 2vw, 2rem);
+    --nav-font-size: clamp(.4rem, 2vw, 1.2rem);
 }

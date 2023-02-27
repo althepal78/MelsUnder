@@ -7,25 +7,21 @@
     <div class="brand-logo">
         <img src="/images/melysSmallLogo.jpg" alt="brand-logo" aria-label="Mellys Brand" />
     </div>
-    
 
-   <div>
-   
-       <ul >
-           <li >
-                <a 
-                   asp-controller="Customer"
-                   asp-action="Index" >
+    <div class="nav-links">
+        <ul>
+            <li>
+                <a asp-controller="Customer"
+                   asp-action="Index">
                     Home
                     @*   <svg class="glow-container">
                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                     <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
                     </svg>*@
                 </a>
-           </li>
-            <li >
-                <a 
-                   asp-controller="Menu"
+            </li>
+            <li>
+                <a asp-controller="Menu"
                    asp-action="DailyMenu">
                     Daily Menu
                     @*  <svg class="glow-container">
@@ -34,49 +30,31 @@
                     </svg>*@
                 </a>
             </li>
-            @if (User.IsInRole(StaticDetails.Role_Admin))
-            {
-                <li >
-                    <a 
-                   asp-controller="Menu"
-                   asp-action="Index">
-                        Menu Creator
-                        @*  <svg class="glow-container">
-                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                    </svg>*@
-                    </a>
-                </li>
-                <!--
+            @if (User.IsInRole(StaticDetails.Role_Admin)) {
 
-
-                <li class="special" data-special>
-                    <div class="dropdown information-grid" data-dropdown>
-                        <button data-dropdown-button href="#">Dashboard &gt;</button>
-
-                        <div class="dropdown-menu">
-                            <div class="dropdown-links">
+                <li>
+                    <div class="drop-down-menu" data-dropdown-menu >
+                        <button id="dropdown-button" data-dropdown-button>Dashboard &#11143;</button>
+                        <div class="drop-down-links" data-dropdown-links>                          
                                 <a asp-controller="Category" asp-action="Index">
-                                    Category &gt;
+                                    Category  
                                 </a>
 
                                 <a asp-controller="Product" asp-action="Index">
-                                    Food/Drinks &gt;
+                                    Food/Drinks  
                                 </a>
 
                                 <a asp-controller="Menu" asp-action="Index">
-                                    Menu Creater &gt;
-                                </a>
-                            </div>
+                                    Menu Creater 
+                                </a>                         
                         </div>
                     </div>
                 </li>
-                -->
-
-                <li >
-                    <a 
-                        asp-controller="Login"
-                        asp-action="Logout">
+          
+                <li>
+                    <!-- this is the logout -->
+                    <a asp-controller="Login"
+                   asp-action="Logout">
                         Log Out
                         @*  <svg class="glow-container">
                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
@@ -86,9 +64,9 @@
                 </li>
             }
             else {
-                <li >
+                <li>
                     <a asp-controller="Login"
-                       asp-action="Login">
+                   asp-action="Login">
                         Login
                         @*  <svg class="glow-container">
                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
@@ -97,9 +75,9 @@
                     </a>
                 </li>
             }
-       </ul>
+        </ul>
 
-   </div>
-   <!-- end nav-wrapper -->
+    </div>
+    <!-- end nav-wrapper -->
 </div>
 <!-- end nav container-->

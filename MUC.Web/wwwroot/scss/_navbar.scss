@@ -1,14 +1,98 @@
 ﻿@import "_variables";
 
 nav {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
+    width: 100%;
 
     .nav-container {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+
         .brand-logo {
-            width: clamp(3rem, 20vw, 14rem);
-            border-radius: 50%;
+            img {
+                width: clamp(4rem, 20vw, 12rem);
+                border-radius: 50%;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: end;
+            margin-right: 1.5rem;
+
+            ul {
+                display: flex;
+                align-items: center;
+                width: 100%;
+
+                li {
+                    display: inline;
+                    margin: 0 2rem;
+                    list-style-type: none;
+
+                    a:hover {
+                        background-color: var(--text);
+                        color: var(--dark);
+                        transition: 1s ease-in-out;                        
+                    }
+
+                    .drop-down-menu {
+                        position: relative;
+                        font-size: var(--nav-font-size);
+
+                        button {
+                            color: brown;
+                            font-size: var(--body-font-size);
+                        }
+
+                        .drop-down-links {
+                            display: grid;
+                            position: absolute;
+                            opacity: 0;
+                            pointer-events: none;
+                            transition: all .8s ease-in-out;
+                            top: calc(100% + .2rem);
+                            left:.1rem;
+                            width:98%;
+                            a {
+                                color: var(--accent);
+                                padding: .2rem;
+
+                                &:hover {
+                                    color: var(--text);
+                                    background-color: var(--dark);
+                                }
+                            }
+                        }
+
+                        .is-visible {
+                            display: grid;
+                            width: 98%;                            
+                            opacity: 1;
+                            position: absolute;
+                            top: calc(100% + .2rem);
+                            left: .1rem;
+                            z-index: 100;
+                            color: var(--text);
+                            pointer-events: auto;
+                            transform: translateY(.2rem);
+                            transition: all .8s ease-in-out;
+                            background-color: var(--background);
+                            box-shadow: 4px 4px 3px var(--accent);
+                            background-color: #000000;
+                            a {                               
+                                padding: .2rem;
+                                &:hover{
+                                    color: var(--background);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

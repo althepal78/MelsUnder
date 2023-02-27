@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Category>
 
-<div>
+<div class="centerdiv" >
     <div>
         <div class="heading-items">
             <h2>Category List</h2>
@@ -8,10 +8,10 @@
                asp-action="Create"
                class="button glow-effect">
                 Create New Category
-                <svg class="glow-container">
+             @*   <svg class="glow-container">
                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                     <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                </svg>
+                </svg>*@
             </a>
         </div>
 
@@ -31,30 +31,30 @@
                     <td>
                         <a class="button glow-effect" asp-controller="Category" asp-action="Details" asp-route-id="@obj.Id">
                             @obj.Name
-                            <svg class="glow-container">
+                            @*<svg class="glow-container">
                                 <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                                 <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                            </svg>
+                            </svg>*@
                         </a>
                     </td>
                     <td>
                         @obj.DisplayOrder
                     </td>
                     <td>
-                        <div role="group">
+                        <div >
                             <a class="button glow-effect" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
                                 Edit
-                                <svg class="glow-container">
+                                @*<svg class="glow-container">
                                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                                     <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
+                                </svg>*@
                             </a>
                             <a class="button glow-effect" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">
                                 Delete
-                                <svg class="glow-container">
+                              @*  <svg class="glow-container">
                                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                                     <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
+                                </svg>*@
                             </a>
                         </div>
                     </td>

@@ -17,16 +17,18 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    font-size: var(--body-font-size);
-    line-height: 1.55;
+    font-size: var(--body-font);
     background: var(--background);
     color: var(--text);
+}
+main{
+    min-height:90vh;
 }
 
 a,
 a:visited {
     text-decoration: none;
-    color: var(--text);
+    color: var(--accent);
 }
 
 .main-paragraph {
@@ -43,3 +45,5 @@ a:visited {
 
 @import "_navbar";
 @import "_tables";
+@import "_footer";
+@import "_buttons";

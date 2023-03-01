@@ -2,12 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 :root {
   --background: #fff;
-  --accent: #ff9ff6;
+  --accent: #005B60;
   --text: #000;
   --dark: brown;
   --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
-  --body-font-size: clamp(.5rem, 2vw, 2rem);
-  --nav-font-size: clamp(.4rem, 2vw, 1.2rem);
+  --nav-links: #ff9ff6;
+  --facebook: #1092f4;
+  --instagram: linear-gradient( #405de6, #5b51d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80 );
+  --tiktok: linear-gradient(to right, #010101, #69c9d0, #fff, #ee1d52);
+  --body-font: clamp(.5rem, 2vw, 2rem);
+  --nav-font: clamp(.2rem, 1.5vw, 1.2rem);
 }
 
 *,
@@ -24,16 +28,19 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  font-size: var(--body-font-size);
-  line-height: 1.55;
+  font-size: var(--body-font);
   background: var(--background);
   color: var(--text);
+}
+
+main {
+  min-height: 90vh;
 }
 
 a,
 a:visited {
   text-decoration: none;
-  color: var(--text);
+  color: var(--accent);
 }
 
 .main-paragraph {
@@ -47,16 +54,6 @@ a:visited {
   -webkit-background-clip: text;
 }
 
-:root {
-  --background: #fff;
-  --accent: #ff9ff6;
-  --text: #000;
-  --dark: brown;
-  --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
-  --body-font-size: clamp(.5rem, 2vw, 2rem);
-  --nav-font-size: clamp(.4rem, 2vw, 1.2rem);
-}
-
 nav {
   width: 100%;
 }
@@ -67,6 +64,9 @@ nav .nav-container {
   align-items: center;
   width: 100%;
   padding: 1rem;
+}
+nav .nav-container .brand-logo {
+  margin-left: 2rem;
 }
 nav .nav-container .brand-logo img {
   width: clamp(4rem, 20vw, 12rem);
@@ -87,18 +87,15 @@ nav .nav-container .nav-links ul li {
   margin: 0 2rem;
   list-style-type: none;
 }
-nav .nav-container .nav-links ul li a:hover {
-  background-color: var(--text);
-  color: var(--dark);
-  transition: 1s ease-in-out;
-}
 nav .nav-container .nav-links ul li .drop-down-menu {
   position: relative;
-  font-size: var(--nav-font-size);
+  font-size: var(--nav-font);
 }
 nav .nav-container .nav-links ul li .drop-down-menu button {
-  color: brown;
-  font-size: var(--body-font-size);
+  color: var(--accent);
+  font-size: var(--body-font);
+  border-radius: 0.3rem 0.3rem 0 0;
+  padding: 0.2rem;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links {
   display: grid;
@@ -111,7 +108,7 @@ nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links {
   width: 98%;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a {
-  color: var(--accent);
+  color: var(--nav-links);
   padding: 0.2rem;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a:hover {
@@ -126,29 +123,20 @@ nav .nav-container .nav-links ul li .drop-down-menu .is-visible {
   top: calc(100% + 0.2rem);
   left: 0.1rem;
   z-index: 100;
-  color: var(--text);
   pointer-events: auto;
+  border-radius: 0 0 0.3rem 0.3rem;
   transform: translateY(0.2rem);
-  transition: all 0.8s ease-in-out;
-  background-color: var(--background);
-  box-shadow: 4px 4px 3px var(--accent);
-  background-color: #000000;
+  transition: all 0.5s ease-in-out;
+  color: var(--text);
+  background-color: var(--accent);
+  box-shadow: 4px 4px 8px black;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .is-visible a {
   padding: 0.2rem;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .is-visible a:hover {
-  color: var(--background);
-}
-
-:root {
-  --background: #fff;
-  --accent: #ff9ff6;
-  --text: #000;
-  --dark: brown;
-  --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
-  --body-font-size: clamp(.5rem, 2vw, 2rem);
-  --nav-font-size: clamp(.4rem, 2vw, 1.2rem);
+  background-color: var(--nav-links);
+  color: var(--accent);
 }
 
 .centerdiv {
@@ -174,14 +162,25 @@ table thead tr {
 }
 table tbody tr {
   border-bottom: 0.063rem solid #a7a7a7;
+  text-align: left;
 }
-table tbody tr:nth-of-type(even) {
-  background-color: #e4e4e4;
-  color: #005B60;
+table tbody tr .edit-delete a {
+  margin: 0.6rem;
+}
+table tbody tr:nth-of-type(odd) {
+  color: var(--text);
   font-weight: 500;
 }
-table tbody tr:nth-of-type(even) a {
-  color: #005B60;
+table tbody tr:nth-of-type(odd) a, table tbody tr:nth-of-type(odd) a:visited {
+  color: var(--text);
+}
+table tbody tr:nth-of-type(even) {
+  background-color: #7badb0;
+  color: white;
+  font-weight: 500;
+}
+table tbody tr:nth-of-type(even) a, table tbody tr:nth-of-type(even) a:visited {
+  color: white;
 }
 table tbody tr:last-of-type {
   border-bottom: 0.14rem solid #005B60;
@@ -189,4 +188,127 @@ table tbody tr:last-of-type {
 table th,
 table td {
   padding: 0.75rem 0.938rem;
+}
+
+footer {
+  text-align: center;
+  background-color: #d9d9d9;
+  border-top: 0.4rem solid var(--accent);
+}
+footer .contact {
+  font-size: clamp(0.4rem, 5vw, 1.5rem);
+  padding: 0.4rem;
+}
+footer .contact .fa-facebook {
+  color: var(--facebook);
+}
+footer .contact .fa-instagram {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background: var(--instagram);
+  -webkit-background-clip: text;
+}
+footer .contact .fa-tiktok {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background: var(--tiktok);
+  -webkit-background-clip: text;
+}
+footer .contact :is(.fa-facebook, .fa-instagram, .fa-tiktok) {
+  margin: 0 0.4rem;
+}
+footer .contact :is(.fa-facebook, .fa-instagram, .fa-tiktok):hover {
+  -webkit-text-fill-color: #a58a06;
+}
+footer .copyright {
+  font-size: clamp(0.4rem, 5vw, 1rem);
+}
+
+.button {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: inherit;
+  font-weight: 700;
+  padding: 0.25rem;
+  border: 0;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.glow-effect {
+  --glow-line-color: var(--nav-links);
+  --glow-line-thickness: 2px;
+  --glow-line-length: 30px;
+  --glow-blur-color: var(--accent);
+  --glow-blur-size: 4px;
+  --glow-offset: 0px;
+  --animation-speed: 1.2s;
+  /* do not change, used for calculations */
+  --container-offset: 100px;
+  position: relative;
+}
+
+.glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  opacity: 0;
+  /* outline: 3px solid blue; */
+}
+
+.glow-blur,
+.glow-line {
+  width: calc(100% - var(--container-offset) + var(--glow-offset));
+  height: calc(100% - var(--container-offset) + var(--glow-offset));
+  x: calc(var(--container-offset) / 2 + var(--glow-offset) / -2);
+  y: calc(var(--container-offset) / 2 + var(--glow-offset) / -2);
+  /* rx: 1.25rem; */
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  stroke-dasharray: var(--glow-line-length) calc(50px - var(--glow-line-length));
+}
+
+.glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur) {
+  stroke-dashoffset: -80px;
+  transition: stroke-dashoffset var(--animation-speed) ease-in;
+}
+
+.glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+
+.glow-effect:is(:hover, :focus) .glow-container {
+  animation: glow-visibility ease-in-out var(--animation-speed);
+}
+
+@keyframes glow-visibility {
+  0%, 100% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+}
+.glow-effect[data-glow-animation=false] {
+  --glow-line-length: 50px;
+}
+
+.glow-effect[data-glow-offset=true] {
+  --glow-offset: 10px;
+}
+
+.glow-effect[data-glow-animation=grow]:is(:hover, :focus) .glow-container {
+  scale: 1.3;
+  transition: scale var(--animation-speed) linear;
 }

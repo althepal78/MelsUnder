@@ -1,0 +1,39 @@
+﻿footer {
+    text-align: center;
+    background-color: #d9d9d9;
+    border-top: .4rem solid var(--accent);
+    .contact {
+        font-size: clamp(.4rem, 5vw, 1.5rem);
+        padding: .4rem;
+
+        .fa-facebook {
+            color: var(--facebook);
+        }
+
+        .fa-instagram {
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            background: var(--instagram);
+            -webkit-background-clip: text;
+        }
+
+        .fa-tiktok {
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            background: var(--tiktok);
+            -webkit-background-clip: text;
+        }
+
+        :is(.fa-facebook, .fa-instagram, .fa-tiktok) {
+            margin: 0 .4rem;
+
+            &:hover {
+                -webkit-text-fill-color: #a58a06;
+            }
+        }
+    }
+
+    .copyright {
+        font-size: clamp(.4rem, 5vw, 1rem);
+    }
+}

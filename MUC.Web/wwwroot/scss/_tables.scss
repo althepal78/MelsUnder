@@ -1,9 +1,8 @@
-﻿@import "_variables";
-
-.centerdiv {
+﻿.centerdiv {
     width: 100%;
     display: grid;
     justify-content: center;
+
 }
 
 table {
@@ -21,27 +20,36 @@ table {
             color: white;
             text-align: left;
             font-weight: bold;
-
-            th {
-            }
         }
     }
 
     tbody {
         tr {
             border-bottom: .063rem solid #a7a7a7ff;
+            text-align: left;
+            .edit-delete{
+                a{
+                    margin: .6rem;
+                }
+            }
+        }
 
-            td {
+        tr:nth-of-type(odd) {
+            color: var(--text);
+            font-weight: 500;
+
+            a, a:visited {
+                color: var(--text);
             }
         }
 
         tr:nth-of-type(even) {
-            background-color: #e4e4e4;
-            color: #005B60;
+            background-color: #7badb0;
+            color: white;
             font-weight: 500;
 
-            a {
-                color: #005B60;
+            a, a:visited {
+                color: white;
             }
         }
 

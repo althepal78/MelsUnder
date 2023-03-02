@@ -1,0 +1,59 @@
+﻿form {
+    display: grid;
+    justify-content: center;
+    gap: 1rem;
+
+    .title {
+        background-color: var(--accent);
+        color: white;
+        width: clamp(.8rem, 25vw, 24.5rem);
+        text-align: center;
+        border-radius: .5rem .5rem 0 0;
+        height: 3rem;
+        font-size: clamp(.5rem, 5vw, 2rem);
+    }
+
+    .inputs {
+        input {
+            width: clamp(.8rem, 25vw, 24.5rem);
+        }
+
+        input[type="email"] {
+            font-size: clamp(.5rem, 5vw, 2rem);
+            border: 2px solid var(--accent);
+        }
+
+        input[type="password"] {
+            font-size: clamp(.5rem, 5vw, 2rem);
+            border: 2px solid var(--accent);
+        }
+
+        input[type="text"] {
+        }
+
+        input[type="number"] {
+        }
+
+        input[type="date"] {
+        }
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: center;
+        background-color: var(--accent);
+        color: white;
+        width: clamp(.8rem, 25vw, 24.5rem);
+        text-align: center;
+        border-radius: 0 0 .5rem .5rem;
+        height: 3rem;
+        font-size: clamp(.5rem, 5vw, 2rem);
+
+        .button {
+            height: 2.5rem;
+            top: .3rem;
+            color: var(--accent);
+            background-color: white;
+        }
+    }
+}

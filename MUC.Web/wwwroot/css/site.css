@@ -54,6 +54,10 @@ a:visited {
   -webkit-background-clip: text;
 }
 
+.validation {
+  color: red;
+}
+
 nav {
   width: 100%;
 }
@@ -192,12 +196,16 @@ table td {
 
 footer {
   text-align: center;
-  background-color: #d9d9d9;
+  background-color: #d9d9d4;
   border-top: 0.4rem solid var(--accent);
+  color: var(--accent);
 }
 footer .contact {
   font-size: clamp(0.4rem, 5vw, 1.5rem);
   padding: 0.4rem;
+}
+footer .contact span {
+  color: var(--accent);
 }
 footer .contact .fa-facebook {
   color: var(--facebook);
@@ -311,4 +319,177 @@ footer .copyright {
 .glow-effect[data-glow-animation=grow]:is(:hover, :focus) .glow-container {
   scale: 1.3;
   transition: scale var(--animation-speed) linear;
+}
+
+form {
+  display: grid;
+  justify-content: center;
+  gap: 1rem;
+}
+form .title {
+  background-color: var(--accent);
+  color: white;
+  width: clamp(0.8rem, 25vw, 24.5rem);
+  text-align: center;
+  border-radius: 0.5rem 0.5rem 0 0;
+  height: 3rem;
+  font-size: clamp(0.5rem, 5vw, 2rem);
+}
+form .inputs input {
+  width: clamp(0.8rem, 25vw, 24.5rem);
+}
+form .inputs input[type=email] {
+  font-size: clamp(0.5rem, 5vw, 2rem);
+  border: 2px solid var(--accent);
+}
+form .inputs input[type=password] {
+  font-size: clamp(0.5rem, 5vw, 2rem);
+  border: 2px solid var(--accent);
+}
+form .button-group {
+  display: flex;
+  justify-content: center;
+  background-color: var(--accent);
+  color: white;
+  width: clamp(0.8rem, 25vw, 24.5rem);
+  text-align: center;
+  border-radius: 0 0 0.5rem 0.5rem;
+  height: 3rem;
+  font-size: clamp(0.5rem, 5vw, 2rem);
+}
+form .button-group .button {
+  height: 2.5rem;
+  top: 0.3rem;
+  color: var(--accent);
+  background-color: white;
+}
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 2rem 0;
+}
+
+#cards:hover > .card::after {
+  opacity: 1;
+}
+
+.card {
+  position: relative;
+  font-size: 0.5rem;
+  min-width: 50%;
+  height: 15rem;
+  background-color: rgba(var(--accent), 0.5);
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card::before,
+.card::after {
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: opacity 500ms;
+  width: 100%;
+}
+
+.card::before {
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 159, 246, 0.8), transparent 30%);
+  z-index: 3;
+}
+
+.card > .card-content {
+  background-color: var(--accent);
+  border-radius: inherit;
+  display: flex;
+  flex-grow: 1;
+  inset: 1px;
+  padding: 1rem;
+  position: absolute;
+  z-index: 2;
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4,
+span {
+  color: #b74e02;
+  font-weight: 500;
+  margin: 0px;
+}
+
+i {
+  color: white;
+}
+
+.card-image {
+  display: flex;
+  overflow: hidden;
+  max-width: 20rem;
+}
+.card-image img {
+  font-size: 6rem;
+  opacity: 1;
+  object-fit: contain;
+}
+
+.card-info-wrapper {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 0px 20px;
+}
+
+.card-info {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.card-info > i {
+  font-size: 0.5rem;
+  height: 20px;
+  line-height: 20px;
+}
+
+.card-info-title > h3 {
+  font-size: 1.5rem;
+  color: #e8c321;
+}
+
+.card-info-title > h4 {
+  color: rgba(5, 255, 255, 0.5);
+  font-size: 0.85em;
+  margin-top: 8px;
+  background-color: blue;
+}
+
+.text-info {
+  color: #bb7cd0;
+  font-size: 0.8rem;
+  float: right;
+}
+
+.description,
+.description p {
+  color: #ff6a00;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0 auto;
 }

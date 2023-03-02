@@ -42,8 +42,12 @@ a:visited {
            -webkit-background-clip: text;
     }
 }
-
+.validation{
+    color:red;
+}
 @import "_navbar";
 @import "_tables";
 @import "_footer";
 @import "_buttons";
+@import "_forms";
+@import "_cards";

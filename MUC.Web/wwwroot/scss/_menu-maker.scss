@@ -1,0 +1,42 @@
+﻿.menu-container {
+   display: grid;
+   justify-content: center;
+
+    .grid-container {
+        display: flex;
+        justify-content: start;
+        margin-bottom: .6rem;
+        width: 100%;
+        flex-wrap: wrap;
+
+        .menu-image {
+            img {
+                width: clamp(5rem,25vw, 20rem);
+                vertical-align: middle;
+            }
+        }
+
+        .title-description {
+            padding: .8rem;
+            position: relative;
+            min-width: clamp(5rem, 45vw, 45rem);
+            flex-wrap: wrap;
+
+            h3 {
+                font-size: clamp(.5rem, 2vw, 1.8rem);
+                margin-bottom: .8rem;
+                color: var(--h3)
+            }
+
+            a {
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+                font-size: var(--nav-font);
+                background-color: var(--background);
+            }
+
+            background-color: var(--accent);
+        }
+    }
+}

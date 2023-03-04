@@ -24,8 +24,8 @@ namespace MUC.Web.Controllers.Admin
         [AllowAnonymous]
         public ActionResult DailyMenu()
         {
-
-            return View();
+            Menu todayMenu = _db.Menus.Where(d => d.DateColumn == DateOnly.FromDateTime(DateTime.Now)).FirstOrDefault();
+            return View(todayMenu);
         }
 
         // GET: MenuController

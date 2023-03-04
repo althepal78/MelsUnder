@@ -2,24 +2,24 @@
 
 <form asp-controller="Menu" asp-action="Create" >
     <div asp-validation-summary="All" class="validation"></div>
-    <h1>Details</h1>
+    <h1 class="title"></h1>
     <input hidden asp-for="ProductId" />
     @if (Model.OneProduct is not null)
     {
         <img style="width:20rem;" src="@Model.OneProduct.ImgURL" />
-        <h4>@Model.OneProduct.Title</h4>
+        <h4 >@Model.OneProduct.Title</h4>
     }
 
     <input asp-for="DateColumn" type="date" id="date" />
-    <br />
-    <br />
-    <button class="button glow-effect" type="submit" role="button">
+   
+    <button class="button glow-effect" type="submit" >
         Add to Menu
         <svg class="glow-container">
             <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
             <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
         </svg>
     </button>
+    <div class="menu-bottom"> </div>
 </form>
 @section Scripts{
     @{

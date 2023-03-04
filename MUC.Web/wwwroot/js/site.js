@@ -35,3 +35,9 @@ try {
 } catch (err) {
     console.log("Card beauty Error: " + err);
 }
+
+  /// just for the date
+
+    window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("date").valueAsDate = new Date();
+    });

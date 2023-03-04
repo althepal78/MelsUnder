@@ -57,7 +57,7 @@ nav {
                             width: 98%;
 
                             a {
-                                color: var(--nav-links);
+                                color: var(--accent);
                                 padding: .2rem;
 
                                 &:hover {
@@ -80,15 +80,15 @@ nav {
                             transform: translateY(.2rem);
                             transition: all .5s ease-in-out;
                             color: var(--text);
-                            background-color: var(--accent);
-                            box-shadow: 4px 4px 8px black;
+                            background-color: var(--background);
+                            box-shadow: 4px 4px 8px var(--accent);
 
                             a {
                                 padding: .2rem;
 
                                 &:hover {
-                                    background-color:var(--nav-links);
-                                    color: var(--accent);
+                                    background-color:var(--accent);
+                                    color: var(--background);
                                 }
                             }
                         }

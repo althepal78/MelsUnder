@@ -1,27 +1,27 @@
 ﻿@model List<Product>
-<div style="color:white;width:100%;margin:0 40%;">
+<div class="menu-container">
     <h1> Menu Creator </h1>
-
     @{
-        @if (Model != null)
-        {
+        @if (Model != null) {
+            @foreach (var meal in Model) {
+                if (meal != null) {
+                    <div class="grid-container">
 
-            @foreach (var meal in Model)
-            {
-                if (meal != null)
-                {
-                    <div>
-                        <img style="width: 15rem;" src="@meal.ImgURL" />
-                    </div>
-                    <div style="margin: 0 0 1.5rem 0;">
-                        <a class="button glow-effect" asp-controller="Menu" asp-action="Create" asp-route-id="@meal.Id">
-                            @meal.Title
-                            <svg class="glow-container">
-                                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                            </svg>
-                        </a>
+                        <div class="menu-image">
+                            <img src="@meal.ImgURL" />
+                        </div>
 
+                        <div class="title-description">
+                            <h3>Product name:  @meal.Title</h3>
+                            <a class="button glow-effect" asp-controller="Menu" asp-action="Create" asp-route-id="@meal.Id">
+                                Add to Menu
+                                <svg class="glow-container">
+                                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                                </svg>
+                            </a>
+
+                        </div>
                     </div>
                 }
             }
@@ -29,3 +29,4 @@
         }
     }
 </div>
+

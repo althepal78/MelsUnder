@@ -7,6 +7,7 @@
   --dark: brown;
   --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
   --nav-links: #ff9ff6;
+  --h3: #e8c321;
   --facebook: #1092f4;
   --instagram: linear-gradient( #405de6, #5b51d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80 );
   --tiktok: linear-gradient(to right, #010101, #69c9d0, #fff, #ee1d52);
@@ -112,7 +113,7 @@ nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links {
   width: 98%;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a {
-  color: var(--nav-links);
+  color: var(--accent);
   padding: 0.2rem;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a:hover {
@@ -132,15 +133,15 @@ nav .nav-container .nav-links ul li .drop-down-menu .is-visible {
   transform: translateY(0.2rem);
   transition: all 0.5s ease-in-out;
   color: var(--text);
-  background-color: var(--accent);
-  box-shadow: 4px 4px 8px black;
+  background-color: var(--background);
+  box-shadow: 4px 4px 8px var(--accent);
 }
 nav .nav-container .nav-links ul li .drop-down-menu .is-visible a {
   padding: 0.2rem;
 }
 nav .nav-container .nav-links ul li .drop-down-menu .is-visible a:hover {
-  background-color: var(--nav-links);
-  color: var(--accent);
+  background-color: var(--accent);
+  color: var(--background);
 }
 
 .centerdiv {
@@ -326,6 +327,18 @@ form {
   justify-content: center;
   gap: 1rem;
 }
+form .menu-bottom {
+  background-color: var(--accent);
+  color: white;
+  width: clamp(0.8rem, 25vw, 24.5rem);
+  text-align: center;
+  border-radius: 0 0 0.5rem 0.5rem;
+  height: 3rem;
+  font-size: clamp(0.5rem, 5vw, 2rem);
+}
+form h4 {
+  color: var(--accent);
+}
 form .title {
   background-color: var(--accent);
   color: white;
@@ -344,6 +357,10 @@ form .inputs input[type=email] {
 }
 form .inputs input[type=password] {
   font-size: clamp(0.5rem, 5vw, 2rem);
+  border: 2px solid var(--accent);
+}
+form .inputs input[type=date] {
+  height: 1rem;
   border: 2px solid var(--accent);
 }
 form .button-group {
@@ -492,4 +509,39 @@ i {
   font-size: 1rem;
   text-align: center;
   margin: 0 auto;
+}
+
+.menu-container {
+  display: grid;
+  justify-content: center;
+}
+.menu-container .grid-container {
+  display: flex;
+  justify-content: start;
+  margin-bottom: 0.6rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.menu-container .grid-container .menu-image img {
+  width: clamp(5rem, 25vw, 20rem);
+  vertical-align: middle;
+}
+.menu-container .grid-container .title-description {
+  padding: 0.8rem;
+  position: relative;
+  min-width: clamp(5rem, 45vw, 45rem);
+  flex-wrap: wrap;
+  background-color: var(--accent);
+}
+.menu-container .grid-container .title-description h3 {
+  font-size: clamp(0.5rem, 2vw, 1.8rem);
+  margin-bottom: 0.8rem;
+  color: var(--h3);
+}
+.menu-container .grid-container .title-description a {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: var(--nav-font);
+  background-color: var(--background);
 }

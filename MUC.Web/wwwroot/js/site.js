@@ -37,7 +37,10 @@ try {
 }
 
   /// just for the date
-
+try {
     window.addEventListener('DOMContentLoaded', () => {
         document.getElementById("date").valueAsDate = new Date();
     });
+}catch (error) {
+    console.error(error);
+}

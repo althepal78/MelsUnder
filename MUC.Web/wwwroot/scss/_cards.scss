@@ -15,7 +15,7 @@
 
 .card {
     position: relative;
-    font-size: 0.5rem;
+    font-size: var(--body-font);
     min-width: 50%;
     height: 15rem;
     background-color: rgba(var(--accent), .5);
@@ -66,6 +66,7 @@ span {
     color: #b74e02;
     font-weight: 500;
     margin: 0px;
+    font-size: var(--body-font);
 }
 
 i {
@@ -77,8 +78,7 @@ i {
     overflow: hidden;
     max-width: 20rem;
 
-    img {
-        font-size: 6rem;
+    img {        
         opacity: 1;
         object-fit: contain;
     }
@@ -105,13 +105,13 @@ i {
 }
 
 .card-info-title > h3 {
-    font-size: 1.5rem;
+    font-size: var(--body-font);
     color: #e8c321;
 }
 
 .card-info-title > h4 {
     color: rgba(5, 255, 255, 0.5);
-    font-size: 0.85em;
+    font-size: var(--body-font);
     margin-top: 8px;
     background-color: blue;
 }
@@ -125,7 +125,7 @@ i {
 .description,
 .description p {
     color: #ff6a00;
-    font-size: 1rem;
+    font-size: var(--nav-font);
     text-align: center;
     margin: 0 auto;
 }

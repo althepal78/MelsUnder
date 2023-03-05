@@ -5,8 +5,7 @@ namespace MUC.Models.ViewModels
 {
     public class MenuVM
     {
-        public Guid ID { get; set; }
-        public Guid ProductId { get; set; }
+       public Guid ProductId { get; set; }
 
         [PastDate]
         public DateOnly DateColumn { get; set; }

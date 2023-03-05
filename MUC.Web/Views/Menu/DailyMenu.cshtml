@@ -1,10 +1,41 @@
 ﻿@model Menu
-<h1> Daily Menu </h1>
-@if(Model is not null) {
-    <div>
-        something here
-    </div>
-}
-<form>
 
-</form>
+
+<div class="main-section">
+    @if (Model != null) {
+        <p class="main-paragraph">
+            This is what we have for today! Todays Date is <span>@Model.DateColumn.ToString("MMMM dd, yyyy")</span>
+        </p>
+        <div>
+            <div id="cards">
+                @foreach (var product in Model.ProductMenus) {
+                    if (product != null) {
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-image">
+                                    <img src="@product.Product.ImgURL" alt="product.Product.Title">
+                                </div>
+                                <div class="card-info-wrapper">
+                                    <div class="card-info">
+                                        <div class="card-info-title">
+                                            <h3 class="product-title">@product.Product.Title</h3>
+                                            <p class="description">@product.Product.Description</p>
+                                            <p><small class="text-info">by @product.Product.Author</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    }
+    else {
+        <div class="main-paragraph">
+        <p> We are <span> off today!</span></p>
+        </div>
+    }
+
+</div>

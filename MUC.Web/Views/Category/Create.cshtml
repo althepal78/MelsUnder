@@ -1,31 +1,35 @@
 ﻿@model Category
 
-<form method="post" asp-action="Create" asp-controller="Category" class="form">
+<form method="post" asp-action="Create" asp-controller="Category">
     <div class="validation" asp-validation-summary="All"></div>
+
     <div class="title">Create Category</div>
-    <div >
-        <input asp-for="Name" id="Name"  type="text" />
-        <label asp-for="Name" for="Name" >Category Name</label>
+
+    <div class="inputs">
+        <label asp-for="Name" for="Name">Category Name</label>
+        <input asp-for="Name" id="Name" type="text" />
     </div>
 
-    <div >
-        <input asp-for="DisplayOrder" id="DisplayOrder"   type="number" />
+    <div class="inputs">
         <label asp-for="DisplayOrder" for="DisplayOrder">Display Order</label>
+        <input asp-for="DisplayOrder" id="DisplayOrder" type="number" />
     </div>
-    <br />
-    <button type="submit" class="button glow-effect">Create
-        <svg class="glow-container">
-            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-        </svg>
-    </button>
-    <a  class="button glow-effect" asp-controller="Category" asp-action="Index">
-       Back
-        <svg class="glow-container">
-            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-        </svg>
-    </a>
+    <div class="menu-bottom button-group">
+        <button type="submit" class="button glow-effect">
+            Create
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </button>
+        <a class="button glow-effect" asp-controller="Category" asp-action="Index">
+            Back
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </a>
+    </div>
 </form>
 
 @section Scripts{

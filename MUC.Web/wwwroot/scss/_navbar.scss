@@ -1,7 +1,9 @@
 ﻿
 nav {
     width: 100%;
-
+    background-color: #d9d9d4;
+    border-bottom: .4rem solid var(--accent);
+    margin: 0 0 2rem 0;
     .nav-container {
         display: flex;
         gap: 1rem;
@@ -12,6 +14,7 @@ nav {
 
         .brand-logo {
             margin-left: 2rem;
+
             img {
                 width: clamp(4rem, 20vw, 12rem);
                 border-radius: 50%;
@@ -33,7 +36,7 @@ nav {
                     margin: 0 2rem;
                     list-style-type: none;
 
-                 
+
 
                     .drop-down-menu {
                         position: relative;
@@ -87,7 +90,7 @@ nav {
                                 padding: .2rem;
 
                                 &:hover {
-                                    background-color:var(--accent);
+                                    background-color: var(--accent);
                                     color: var(--background);
                                 }
                             }

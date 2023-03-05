@@ -24,7 +24,8 @@ namespace MUC.Web.Controllers.Admin
         [AllowAnonymous]
         public ActionResult DailyMenu()
         {
-            Menu todayMenu = _db.Menus.Where(d => d.DateColumn == DateOnly.FromDateTime(DateTime.Now)).FirstOrDefault();
+            var date = DateOnly.FromDateTime(DateTime.Now);
+            Menu todayMenu = _db.Menus.Where(d => d.DateColumn == date).Include(pm => pm.ProductMenus).ThenInclude(p => p.Product).FirstOrDefault();
             return View(todayMenu);
         }
 
@@ -59,17 +60,9 @@ namespace MUC.Web.Controllers.Admin
             {
                 return View(vm);
             }
-            Console.WriteLine(vm.DateColumn + " what goes ***********************");
-            
-            if(vm.DateColumn == null) {
-                vm.DateColumn = DateOnly.FromDateTime(DateTime.Now);
-            }
-            Menu NewMenu = new Menu();
-            NewMenu.DateColumn =  vm.DateColumn;
-            Console.WriteLine("ID: " + vm.ID + " Date: " + vm.DateColumn + " Product" + vm.OneProduct);
-           
 
-            return RedirectToAction("Index");
+            Console.WriteLine(vm.ProductId + "****************");
+            return RedirectToAction("DailyMenu");
         }
 
     } 

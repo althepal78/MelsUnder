@@ -18,8 +18,8 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     font-size: var(--body-font);
-    background: var(--background);
-    color: var(--text);
+    background-color: var(--background);
+    color: var(--accent);
 }
 main{
     min-height:90vh;
@@ -36,15 +36,18 @@ a:visited {
     text-indent: 2.5rem;
 
     span {
-           -webkit-text-fill-color: transparent;
-           color: transparent;
-           background: var(--dark);
-           -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        background: var(--puerto-rico);
+        -webkit-background-clip: text;
     }
 }
-.validation{
-    color:red;
+
+.validation {
+    color: red;
 }
+
+// these partials are there so I could focus on one section at a time :)
 @import "_navbar";
 @import "_tables";
 @import "_footer";

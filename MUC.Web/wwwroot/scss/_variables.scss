@@ -6,7 +6,7 @@
     --accent: #005B60;
     --text: #000;
     --dark: brown;
-    --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
+    --puerto-rico: linear-gradient(to right, #f81313 33%, #2ec617, #2730ff );
     --nav-links: #ff9ff6;
     --h3: #e8c321;
     // brand colors
@@ -16,6 +16,7 @@
     //font-sizes
     --body-font: clamp(.5rem, 2vw, 2rem);
     --nav-font: clamp(.2rem, 1.5vw, 1.2rem);
+    --input-font: clamp(.4rem, 5vw, 1.5rem);
 }
 //   -webkit-text-fill-color: transparent;
 //   color: transparent;

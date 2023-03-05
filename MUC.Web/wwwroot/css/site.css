@@ -5,7 +5,7 @@
   --accent: #005B60;
   --text: #000;
   --dark: brown;
-  --puerto-rico: linear-gradient(to right, #f81313, #fff 50%, #2730ff);
+  --puerto-rico: linear-gradient(to right, #f81313 33%, #2ec617, #2730ff );
   --nav-links: #ff9ff6;
   --h3: #e8c321;
   --facebook: #1092f4;
@@ -13,6 +13,7 @@
   --tiktok: linear-gradient(to right, #010101, #69c9d0, #fff, #ee1d52);
   --body-font: clamp(.5rem, 2vw, 2rem);
   --nav-font: clamp(.2rem, 1.5vw, 1.2rem);
+  --input-font: clamp(.4rem, 5vw, 1.5rem);
 }
 
 *,
@@ -30,8 +31,8 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   font-size: var(--body-font);
-  background: var(--background);
-  color: var(--text);
+  background-color: var(--background);
+  color: var(--accent);
 }
 
 main {
@@ -51,7 +52,7 @@ a:visited {
 .main-paragraph span {
   -webkit-text-fill-color: transparent;
   color: transparent;
-  background: var(--dark);
+  background: var(--puerto-rico);
   -webkit-background-clip: text;
 }
 
@@ -61,6 +62,9 @@ a:visited {
 
 nav {
   width: 100%;
+  background-color: #d9d9d4;
+  border-bottom: 0.4rem solid var(--accent);
+  margin: 0 0 2rem 0;
 }
 nav .nav-container {
   display: flex;
@@ -200,6 +204,7 @@ footer {
   background-color: #d9d9d4;
   border-top: 0.4rem solid var(--accent);
   color: var(--accent);
+  margin-top: 2rem;
 }
 footer .contact {
   font-size: clamp(0.4rem, 5vw, 1.5rem);
@@ -327,14 +332,41 @@ form {
   justify-content: center;
   gap: 1rem;
 }
+form img {
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  width: clamp(5rem, 25vw, 24.5rem);
+}
+form .inputs {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+}
+form input {
+  font-size: var(--input-font);
+  border: 2px solid var(--accent);
+  width: 24rem;
+}
+form label {
+  font-size: var(--input-font);
+}
+form select {
+  font-size: var(--input-font);
+  border: 2px solid var(--accent);
+}
 form .menu-bottom {
   background-color: var(--accent);
   color: white;
   width: clamp(0.8rem, 25vw, 24.5rem);
-  text-align: center;
   border-radius: 0 0 0.5rem 0.5rem;
   height: 3rem;
   font-size: clamp(0.5rem, 5vw, 2rem);
+  padding: 2rem;
+}
+form .menu-bottom .button {
+  color: var(--accent);
+  background-color: white;
+  text-align: center;
 }
 form h4 {
   color: var(--accent);
@@ -348,25 +380,11 @@ form .title {
   height: 3rem;
   font-size: clamp(0.5rem, 5vw, 2rem);
 }
-form .inputs input {
-  width: clamp(0.8rem, 25vw, 24.5rem);
-}
-form .inputs input[type=email] {
-  font-size: clamp(0.5rem, 5vw, 2rem);
-  border: 2px solid var(--accent);
-}
-form .inputs input[type=password] {
-  font-size: clamp(0.5rem, 5vw, 2rem);
-  border: 2px solid var(--accent);
-}
-form .inputs input[type=date] {
-  height: 1rem;
-  border: 2px solid var(--accent);
-}
 form .button-group {
   display: flex;
   justify-content: center;
   background-color: var(--accent);
+  align-items: center;
   color: white;
   width: clamp(0.8rem, 25vw, 24.5rem);
   text-align: center;
@@ -378,7 +396,10 @@ form .button-group .button {
   height: 2.5rem;
   top: 0.3rem;
   color: var(--accent);
+}
+form button {
   background-color: white;
+  color: var(--accent);
 }
 
 #cards {
@@ -397,7 +418,7 @@ form .button-group .button {
 
 .card {
   position: relative;
-  font-size: 0.5rem;
+  font-size: var(--body-font);
   min-width: 50%;
   height: 15rem;
   background-color: rgba(var(--accent), 0.5);
@@ -448,6 +469,7 @@ span {
   color: #b74e02;
   font-weight: 500;
   margin: 0px;
+  font-size: var(--body-font);
 }
 
 i {
@@ -460,7 +482,6 @@ i {
   max-width: 20rem;
 }
 .card-image img {
-  font-size: 6rem;
   opacity: 1;
   object-fit: contain;
 }
@@ -486,13 +507,13 @@ i {
 }
 
 .card-info-title > h3 {
-  font-size: 1.5rem;
+  font-size: var(--body-font);
   color: #e8c321;
 }
 
 .card-info-title > h4 {
   color: rgba(5, 255, 255, 0.5);
-  font-size: 0.85em;
+  font-size: var(--body-font);
   margin-top: 8px;
   background-color: blue;
 }
@@ -506,7 +527,7 @@ i {
 .description,
 .description p {
   color: #ff6a00;
-  font-size: 1rem;
+  font-size: var(--nav-font);
   text-align: center;
   margin: 0 auto;
 }

@@ -3,14 +3,47 @@
     justify-content: center;
     gap: 1rem;
 
+    img {
+        margin: 0 auto;
+        border-radius: .5rem;
+        width: clamp(5rem, 25vw, 24.5rem);
+    }
+
+    .inputs {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        width: 100%;
+    }
+
+    input {
+        font-size: var(--input-font);
+        border: 2px solid var(--accent);
+        width: 24rem;
+    }
+
+    label {
+        font-size: var(--input-font);
+    }
+
+    select {
+        font-size: var(--input-font);
+        border: 2px solid var(--accent);
+    }
+
     .menu-bottom {
         background-color: var(--accent);
         color: white;
         width: clamp(.8rem, 25vw, 24.5rem);
-        text-align: center;
-        border-radius:0 0 .5rem .5rem;
+        border-radius: 0 0 .5rem .5rem;
         height: 3rem;
         font-size: clamp(.5rem, 5vw, 2rem);
+        padding: 2rem;
+
+        .button {
+            color: var(--accent);
+            background-color: white;
+            text-align: center;
+        }
     }
 
     h4 {
@@ -27,37 +60,11 @@
         font-size: clamp(.5rem, 5vw, 2rem);
     }
 
-    .inputs {
-        input {
-            width: clamp(.8rem, 25vw, 24.5rem);
-        }
-
-        input[type="email"] {
-            font-size: clamp(.5rem, 5vw, 2rem);
-            border: 2px solid var(--accent);
-        }
-
-        input[type="password"] {
-            font-size: clamp(.5rem, 5vw, 2rem);
-            border: 2px solid var(--accent);
-        }
-
-        input[type="text"] {
-        }
-
-        input[type="number"] {
-        }
-
-        input[type="date"] {
-            height: 1rem;
-            border: 2px solid var(--accent);
-        }
-    }
-
     .button-group {
         display: flex;
         justify-content: center;
         background-color: var(--accent);
+        align-items: center;
         color: white;
         width: clamp(.8rem, 25vw, 24.5rem);
         text-align: center;
@@ -69,7 +76,11 @@
             height: 2.5rem;
             top: .3rem;
             color: var(--accent);
-            background-color: white;
         }
+    }
+
+    button {
+        background-color: white;
+        color: var(--accent)
     }
 }

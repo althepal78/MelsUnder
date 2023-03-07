@@ -21,6 +21,12 @@
         width: 24rem;
     }
 
+    input[type="date"] {
+        font-size: var(--input-font);
+        width: clamp(.4rem, 25vw, 24rem);
+    }
+
+
     label {
         font-size: var(--input-font);
     }
@@ -39,15 +45,12 @@
         font-size: clamp(.5rem, 5vw, 2rem);
         padding: 2rem;
 
-        .button {
-            color: var(--accent);
-            background-color: white;
-            text-align: center;
-        }
+      
     }
 
     h4 {
         color: var(--accent);
+        width: clamp(.4rem, 25vw, 24rem);
     }
 
     .title {
@@ -74,13 +77,13 @@
 
         .button {
             height: 2.5rem;
-            top: .3rem;
             color: var(--accent);
+            font-size: clamp(.4rem, 20vw, 1.4rem);
         }
     }
 
     button {
         background-color: white;
-        color: var(--accent)
+        color: var(--accent);
     }
 }

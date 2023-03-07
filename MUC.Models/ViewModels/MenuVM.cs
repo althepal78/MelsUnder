@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using MUC.Models.Validations;
 
-namespace MUC.Models.ViewModels
-{
-    public class MenuVM
-    {
-       public Guid ProductId { get; set; }
+namespace MUC.Models.ViewModels {
+    public class MenuVM {
+        public Guid ProductId { get; set; }
+        public Guid MenuId { get; set; }
 
         [PastDate]
         public DateOnly DateColumn { get; set; }

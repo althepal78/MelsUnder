@@ -56,13 +56,45 @@ namespace MUC.Web.Controllers.Admin
         [ValidateAntiForgeryToken]
         public ActionResult Create(MenuVM vm)
         {
+            vm.OneProduct = _db.Products.FirstOrDefault(p => p.Id == vm.ProductId);
             if (!ModelState.IsValid)
             {
+                
                 return View(vm);
             }
+            Menu menu = _db.Menus.FirstOrDefault(m=> m.DateColumn == vm.DateColumn);
+            Console.WriteLine(vm.DateColumn);
+            if(menu == null) {
+               Menu m = new Menu{ 
+                  DateColumn = vm.DateColumn,
+                };
+                _db.Menus.Add(m);
+                _db.SaveChanges();
 
-            Console.WriteLine(vm.ProductId + "****************");
-            return RedirectToAction("DailyMenu");
+                ProductMenu pm = new ProductMenu {
+                    MenuID = m.ID,
+                    ProductID = vm.ProductId
+                };
+                _db.ProductMenus.Add(pm);
+                _db.SaveChanges();
+            }
+            else {
+                ProductMenu pm = new ProductMenu {
+                    MenuID = menu.ID,
+                    ProductID = vm.ProductId
+                };
+                if ( _db.ProductMenus.Where(p => p.ProductID == vm.ProductId && p.MenuID == menu.ID).FirstOrDefault() is not null  ) {
+                    ModelState.AddModelError("NewMenu", "Already in the menu of " + menu.DateColumn.ToString("MMMM dd , yyyy"));
+                  
+                    return View(vm);
+                }
+                _db.ProductMenus.Add(pm);
+                _db.SaveChanges();
+            }
+
+
+            Console.WriteLine(vm.MenuId + "****************");
+            return RedirectToAction("Index");
         }
 
     } 

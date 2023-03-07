@@ -44,7 +44,15 @@ a:visited {
 }
 
 .validation {
-    color: red;
+    color: var(--nav-links);
+    background-color: var(--accent);
+    font-size: clamp(.4rem, 20vw, 1.2rem);
+    padding: .4rem 0 .4rem .2rem;
+    text-align: center;
+
+    ul {
+        list-style: none;
+    }
 }
 
 // these partials are there so I could focus on one section at a time :)

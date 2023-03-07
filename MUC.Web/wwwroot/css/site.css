@@ -57,7 +57,14 @@ a:visited {
 }
 
 .validation {
-  color: red;
+  color: var(--nav-links);
+  background-color: var(--accent);
+  font-size: clamp(0.4rem, 20vw, 1.2rem);
+  padding: 0.4rem 0 0.4rem 0.2rem;
+  text-align: center;
+}
+.validation ul {
+  list-style: none;
 }
 
 nav {
@@ -189,7 +196,7 @@ table tbody tr:nth-of-type(even) {
   font-weight: 500;
 }
 table tbody tr:nth-of-type(even) a, table tbody tr:nth-of-type(even) a:visited {
-  color: white;
+  color: var(--accent);
 }
 table tbody tr:last-of-type {
   border-bottom: 0.14rem solid #005B60;
@@ -240,7 +247,7 @@ footer .copyright {
 
 .button {
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: clamp(0.4rem, 25vw, 1.4rem);
   font-family: inherit;
   font-weight: 700;
   padding: 0.25rem;
@@ -248,6 +255,7 @@ footer .copyright {
   text-decoration: none;
   margin: 0 0.5rem;
   border-radius: 0.3rem;
+  background-color: white;
 }
 
 .glow-effect {
@@ -347,6 +355,10 @@ form input {
   border: 2px solid var(--accent);
   width: 24rem;
 }
+form input[type=date] {
+  font-size: var(--input-font);
+  width: clamp(0.4rem, 25vw, 24rem);
+}
 form label {
   font-size: var(--input-font);
 }
@@ -363,13 +375,9 @@ form .menu-bottom {
   font-size: clamp(0.5rem, 5vw, 2rem);
   padding: 2rem;
 }
-form .menu-bottom .button {
-  color: var(--accent);
-  background-color: white;
-  text-align: center;
-}
 form h4 {
   color: var(--accent);
+  width: clamp(0.4rem, 25vw, 24rem);
 }
 form .title {
   background-color: var(--accent);
@@ -394,8 +402,8 @@ form .button-group {
 }
 form .button-group .button {
   height: 2.5rem;
-  top: 0.3rem;
   color: var(--accent);
+  font-size: clamp(0.4rem, 20vw, 1.4rem);
 }
 form button {
   background-color: white;

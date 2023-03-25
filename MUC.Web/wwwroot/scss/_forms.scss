@@ -18,72 +18,52 @@
     input {
         font-size: var(--input-font);
         border: 2px solid var(--accent);
-        width: 24rem;
+        width: var(--validation);
     }
 
     input[type="date"] {
         font-size: var(--input-font);
-        width: clamp(.4rem, 25vw, 24rem);
+        width: var(--validation);
     }
 
 
     label {
-        font-size: var(--input-font);
+        font-size: var(--body-font);
     }
 
     select {
         font-size: var(--input-font);
         border: 2px solid var(--accent);
-    }
-
-    .menu-bottom {
-        background-color: var(--accent);
-        color: white;
-        width: clamp(.8rem, 25vw, 24.5rem);
-        border-radius: 0 0 .5rem .5rem;
-        height: 3rem;
-        font-size: clamp(.5rem, 5vw, 2rem);
-        padding: 2rem;
-
-      
+        width: var(--validation);
     }
 
     h4 {
         color: var(--accent);
-        width: clamp(.4rem, 25vw, 24rem);
+        width: var(--validation);
     }
 
     .title {
         background-color: var(--accent);
         color: white;
-        width: clamp(.8rem, 25vw, 24.5rem);
+        width: var(--validation);
         text-align: center;
         border-radius: .5rem .5rem 0 0;
-        height: 3rem;
-        font-size: clamp(.5rem, 5vw, 2rem);
+        font-size: var(--body-font);
+        padding: .5rem;
     }
 
     .button-group {
+        width: var(--validation);
+        background-color: var(--accent);
+        padding: .5rem;
         display: flex;
         justify-content: center;
-        background-color: var(--accent);
         align-items: center;
-        color: white;
-        width: clamp(.8rem, 25vw, 24.5rem);
-        text-align: center;
         border-radius: 0 0 .5rem .5rem;
-        height: 3rem;
-        font-size: clamp(.5rem, 5vw, 2rem);
 
-        .button {
-            height: 2.5rem;
+        .button, button {
             color: var(--accent);
-            font-size: clamp(.4rem, 20vw, 1.4rem);
+            font-size: var(--nav-font);
         }
-    }
-
-    button {
-        background-color: white;
-        color: var(--accent);
     }
 }

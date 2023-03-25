@@ -1,17 +1,16 @@
 ﻿.menu-container {
-   display: grid;
-   justify-content: center;
+    display: grid;
+    justify-content: center;
+
 
     .grid-container {
         display: flex;
         justify-content: start;
         margin-bottom: .6rem;
-        width: 100%;
-        flex-wrap: wrap;
 
         .menu-image {
             img {
-                width: clamp(5rem,25vw, 20rem);
+                width:var(--validation);
                 vertical-align: middle;
             }
         }
@@ -19,16 +18,17 @@
         .title-description {
             padding: .8rem;
             position: relative;
-            min-width: clamp(5rem, 45vw, 45rem);
-            flex-wrap: wrap;
+            word-wrap: break-word;
+            min-width: 45rem;
 
-            h3 {
+            p {
                 font-size: clamp(.5rem, 2vw, 1.8rem);
                 margin-bottom: .8rem;
-                color: var(--h3)
+                color: var(--h3);
+                overflow-wrap: break-word;
             }
 
-            a {
+            a, button {
                 position: absolute;
                 bottom: 1rem;
                 right: 1rem;

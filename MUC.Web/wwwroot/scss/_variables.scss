@@ -2,13 +2,13 @@
 
 :root {
     // colors
-    --background: #fff;
+    --background: #d9d9d4;
     --accent: #005B60;
     --text: #000;
     --dark: brown;
-    --puerto-rico: linear-gradient(to right, #f81313 33%, #2ec617, #2730ff );
+    --puerto-rico: linear-gradient(to right, #f81313 50%, #c3c3c3 .2%, #2730ff);
     --nav-links: #ff9ff6;
-    --h3: #e8c321;
+    --h3: #ffdc4a;
     // brand colors
     --facebook: #1092f4;
     --instagram: linear-gradient( #405de6, #5b51d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80 );
@@ -17,6 +17,15 @@
     --body-font: clamp(.5rem, 2vw, 2rem);
     --nav-font: clamp(.2rem, 1.5vw, 1.2rem);
     --input-font: clamp(.4rem, 5vw, 1.5rem);
+    // width
+    --validation: clamp(0.8rem, 25vw, 24.5rem);
+    // hamburger variables
+    --bar-width: 60px;
+    --bar-height: 8px;
+    --hamburger-gap: 6px;
+    --hamburger-margin: 8px;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
 }
 //   -webkit-text-fill-color: transparent;
 //   color: transparent;

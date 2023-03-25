@@ -1,19 +1,26 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 :root {
-  --background: #fff;
+  --background: #d9d9d4;
   --accent: #005B60;
   --text: #000;
   --dark: brown;
-  --puerto-rico: linear-gradient(to right, #f81313 33%, #2ec617, #2730ff );
+  --puerto-rico: linear-gradient(to right, #f81313 50%, #c3c3c3 .2%, #2730ff);
   --nav-links: #ff9ff6;
-  --h3: #e8c321;
+  --h3: #ffdc4a;
   --facebook: #1092f4;
   --instagram: linear-gradient( #405de6, #5b51d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80 );
   --tiktok: linear-gradient(to right, #010101, #69c9d0, #fff, #ee1d52);
   --body-font: clamp(.5rem, 2vw, 2rem);
   --nav-font: clamp(.2rem, 1.5vw, 1.2rem);
   --input-font: clamp(.4rem, 5vw, 1.5rem);
+  --validation: clamp(0.8rem, 25vw, 24.5rem);
+  --bar-width: 60px;
+  --bar-height: 8px;
+  --hamburger-gap: 6px;
+  --hamburger-margin: 8px;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
 }
 
 *,
@@ -37,12 +44,17 @@ body {
 
 main {
   min-height: 90vh;
+  min-width: 100%;
 }
 
 a,
 a:visited {
   text-decoration: none;
   color: var(--accent);
+}
+
+nav {
+  container-type: inline-size;
 }
 
 .main-paragraph {
@@ -56,64 +68,69 @@ a:visited {
   -webkit-background-clip: text;
 }
 
-.validation {
+.validation-summary-errors {
   color: var(--nav-links);
   background-color: var(--accent);
-  font-size: clamp(0.4rem, 20vw, 1.2rem);
-  padding: 0.4rem 0 0.4rem 0.2rem;
+  font-size: var(--nav-font);
+  padding: 1rem;
   text-align: center;
+  overflow-wrap: break-word;
+  width: var(--validation);
+  border-radius: 0.5rem;
 }
-.validation ul {
-  list-style: none;
+.validation-summary-errors ul {
+  padding: 0.4rem;
+  margin-left: 0.4rem;
 }
 
 nav {
-  width: 100%;
   background-color: #d9d9d4;
   border-bottom: 0.4rem solid var(--accent);
   margin: 0 0 2rem 0;
+  cotainer-type: inline-size;
 }
-nav .nav-container {
+nav .nav-container .body .hamburger-menu {
+  display: none;
+}
+nav .nav-container .body aside {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   padding: 1rem;
 }
-nav .nav-container .brand-logo {
+nav .nav-container .body aside .brand-logo {
   margin-left: 2rem;
 }
-nav .nav-container .brand-logo img {
+nav .nav-container .body aside .brand-logo img {
   width: clamp(4rem, 20vw, 12rem);
   border-radius: 50%;
 }
-nav .nav-container .nav-links {
+nav .nav-container .body aside .nav-links {
   display: flex;
   justify-content: end;
   margin-right: 1.5rem;
 }
-nav .nav-container .nav-links ul {
+nav .nav-container .body aside .nav-links ul {
   display: flex;
   align-items: center;
-  width: 100%;
 }
-nav .nav-container .nav-links ul li {
+nav .nav-container .body aside .nav-links ul li {
   display: inline;
   margin: 0 2rem;
   list-style-type: none;
 }
-nav .nav-container .nav-links ul li .drop-down-menu {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu {
   position: relative;
   font-size: var(--nav-font);
 }
-nav .nav-container .nav-links ul li .drop-down-menu button {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu button {
   color: var(--accent);
   font-size: var(--body-font);
   border-radius: 0.3rem 0.3rem 0 0;
   padding: 0.2rem;
 }
-nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu .drop-down-links {
   display: grid;
   position: absolute;
   opacity: 0;
@@ -123,15 +140,15 @@ nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links {
   left: 0.1rem;
   width: 98%;
 }
-nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu .drop-down-links a {
   color: var(--accent);
   padding: 0.2rem;
 }
-nav .nav-container .nav-links ul li .drop-down-menu .drop-down-links a:hover {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu .drop-down-links a:hover {
   color: var(--text);
   background-color: var(--dark);
 }
-nav .nav-container .nav-links ul li .drop-down-menu .is-visible {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu .is-visible {
   display: grid;
   width: 98%;
   opacity: 1;
@@ -147,10 +164,10 @@ nav .nav-container .nav-links ul li .drop-down-menu .is-visible {
   background-color: var(--background);
   box-shadow: 4px 4px 8px var(--accent);
 }
-nav .nav-container .nav-links ul li .drop-down-menu .is-visible a {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu .is-visible a {
   padding: 0.2rem;
 }
-nav .nav-container .nav-links ul li .drop-down-menu .is-visible a:hover {
+nav .nav-container .body aside .nav-links ul li .drop-down-menu .is-visible a:hover {
   background-color: var(--accent);
   color: var(--background);
 }
@@ -212,10 +229,12 @@ footer {
   border-top: 0.4rem solid var(--accent);
   color: var(--accent);
   margin-top: 2rem;
+  min-width: 100%;
 }
 footer .contact {
   font-size: clamp(0.4rem, 5vw, 1.5rem);
   padding: 0.4rem;
+  min-width: 100%;
 }
 footer .contact span {
   color: var(--accent);
@@ -247,7 +266,6 @@ footer .copyright {
 
 .button {
   cursor: pointer;
-  font-size: clamp(0.4rem, 25vw, 1.4rem);
   font-family: inherit;
   font-weight: 700;
   padding: 0.25rem;
@@ -353,61 +371,45 @@ form .inputs {
 form input {
   font-size: var(--input-font);
   border: 2px solid var(--accent);
-  width: 24rem;
+  width: var(--validation);
 }
 form input[type=date] {
   font-size: var(--input-font);
-  width: clamp(0.4rem, 25vw, 24rem);
+  width: var(--validation);
 }
 form label {
-  font-size: var(--input-font);
+  font-size: var(--body-font);
 }
 form select {
   font-size: var(--input-font);
   border: 2px solid var(--accent);
-}
-form .menu-bottom {
-  background-color: var(--accent);
-  color: white;
-  width: clamp(0.8rem, 25vw, 24.5rem);
-  border-radius: 0 0 0.5rem 0.5rem;
-  height: 3rem;
-  font-size: clamp(0.5rem, 5vw, 2rem);
-  padding: 2rem;
+  width: var(--validation);
 }
 form h4 {
   color: var(--accent);
-  width: clamp(0.4rem, 25vw, 24rem);
+  width: var(--validation);
 }
 form .title {
   background-color: var(--accent);
   color: white;
-  width: clamp(0.8rem, 25vw, 24.5rem);
+  width: var(--validation);
   text-align: center;
   border-radius: 0.5rem 0.5rem 0 0;
-  height: 3rem;
-  font-size: clamp(0.5rem, 5vw, 2rem);
+  font-size: var(--body-font);
+  padding: 0.5rem;
 }
 form .button-group {
+  width: var(--validation);
+  background-color: var(--accent);
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
-  background-color: var(--accent);
   align-items: center;
-  color: white;
-  width: clamp(0.8rem, 25vw, 24.5rem);
-  text-align: center;
   border-radius: 0 0 0.5rem 0.5rem;
-  height: 3rem;
-  font-size: clamp(0.5rem, 5vw, 2rem);
 }
-form .button-group .button {
-  height: 2.5rem;
+form .button-group .button, form .button-group button {
   color: var(--accent);
-  font-size: clamp(0.4rem, 20vw, 1.4rem);
-}
-form button {
-  background-color: white;
-  color: var(--accent);
+  font-size: var(--nav-font);
 }
 
 #cards {
@@ -534,7 +536,7 @@ i {
 
 .description,
 .description p {
-  color: #ff6a00;
+  color: #FF8A44;
   font-size: var(--nav-font);
   text-align: center;
   margin: 0 auto;
@@ -548,29 +550,35 @@ i {
   display: flex;
   justify-content: start;
   margin-bottom: 0.6rem;
-  width: 100%;
-  flex-wrap: wrap;
 }
 .menu-container .grid-container .menu-image img {
-  width: clamp(5rem, 25vw, 20rem);
+  width: var(--validation);
   vertical-align: middle;
 }
 .menu-container .grid-container .title-description {
   padding: 0.8rem;
   position: relative;
-  min-width: clamp(5rem, 45vw, 45rem);
-  flex-wrap: wrap;
+  word-wrap: break-word;
+  min-width: 45rem;
   background-color: var(--accent);
 }
-.menu-container .grid-container .title-description h3 {
+.menu-container .grid-container .title-description p {
   font-size: clamp(0.5rem, 2vw, 1.8rem);
   margin-bottom: 0.8rem;
   color: var(--h3);
+  overflow-wrap: break-word;
 }
-.menu-container .grid-container .title-description a {
+.menu-container .grid-container .title-description a, .menu-container .grid-container .title-description button {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
   font-size: var(--nav-font);
   background-color: var(--background);
+}
+
+@container (width <= 900px) {
+  .nav-container {
+    background-color: black;
+    min-height: 100vh;
+  }
 }

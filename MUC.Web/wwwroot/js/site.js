@@ -39,7 +39,7 @@ try {
   /// just for the date
 try {
     window.addEventListener('DOMContentLoaded', () => {
-        document.getElementById("date").valueAsDate = new Date();
+        document.getElementById("date").valueAsDate = new Date(Date.now());
     });
 }catch (error) {
     console.error(error);

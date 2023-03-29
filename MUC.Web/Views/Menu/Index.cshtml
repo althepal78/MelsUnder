@@ -3,17 +3,17 @@
     <p> Menu Creator </p>
     @{
         @if (Model != null) {
-            @foreach (var meal in Model) {
-                if (meal != null) {
+            @foreach (var product in Model) {
+                if (product != null) {
                     <div class="grid-container">
 
                         <div class="menu-image">
-                            <img src="@meal.ImgURL" />
+                            <img src="@product.ImgURL" />
                         </div>
 
                         <div class="title-description">
-                            <p>Product name:  @meal.Title</p>
-                            <a class="button glow-effect" asp-controller="Menu" asp-action="Create" asp-route-id="@meal.Id">
+                            <p>Product name:  @product.Title</p>
+                            <a class="button glow-effect" asp-controller="Menu" asp-action="Create" asp-route-pid="@product.Id" asp-route-pid="@product.ProductMenus">
                                 Add to Menu
                                 <svg class="glow-container">
                                     <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>

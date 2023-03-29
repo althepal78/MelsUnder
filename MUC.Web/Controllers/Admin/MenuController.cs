@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,66 +8,65 @@ using MUC.Models;
 using MUC.Models.ViewModels;
 using MUC.Utilities;
 using System.Data;
+using System.Net.WebSockets;
 
-namespace MUC.Web.Controllers.Admin
-{
+namespace MUC.Web.Controllers.Admin {
     [Authorize(Roles = StaticDetails.Role_Admin)]
-    public class MenuController : Controller
-    {
+    public class MenuController : Controller {
         private readonly ApplicationDbContext _db;
 
-        public MenuController(ApplicationDbContext db)
-        {
+        public MenuController(ApplicationDbContext db) {
             _db = db;
         }
 
 
         [AllowAnonymous]
-        public ActionResult DailyMenu()
-        {
+        public IActionResult DailyMenu() {
             var date = DateOnly.FromDateTime(DateTime.Now);
-            Menu todayMenu = _db.Menus.Where(d => d.DateColumn == date).Include(pm => pm.ProductMenus).ThenInclude(p => p.Product).FirstOrDefault();
+            Menu todayMenu = _db.Menus.
+                              Where(d => d.DateColumn == DateOnly.FromDateTime(DateTime.Now)).
+                              Include(pm => pm.ProductMenus).
+                              ThenInclude(p => p.Product).
+                              FirstOrDefault();
             return View(todayMenu);
         }
 
         // GET: MenuController
 
-        public ActionResult Index()
-        {
+        public IActionResult Index() {
             var products = _db.Products.Include(c => c.Category).ToList();
             return View(products);
         }
 
 
         // GET: MenuController/Create
-        public ActionResult Create(Guid id)
-        {
+        public IActionResult Create(Guid pid, Guid mid) {
 
-            MenuVM vm = new MenuVM
-            {
-                ProductId = id,
-                OneProduct = _db.Products.FirstOrDefault(f => f.Id == id),
-            };
+            var pr = _db.ProductMenus.FirstOrDefault(f => f.ProductID == pid && f.MenuID == mid);
+            if(pr != null) {
 
-            return View(vm);
+                return View();
+            }
+
+           
+
+            return View();
         }
 
         // POST: MenuController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(MenuVM vm)
-        {
+        public IActionResult Create(MenuVM vm) {
             vm.OneProduct = _db.Products.FirstOrDefault(p => p.Id == vm.ProductId);
-            if (!ModelState.IsValid)
-            {
-                
+            if (!ModelState.IsValid) {
+
                 return View(vm);
             }
-            Menu menu = _db.Menus.FirstOrDefault(m=> m.DateColumn == vm.DateColumn);
+            Menu menu = _db.Menus.FirstOrDefault(m => m.DateColumn == vm.DateColumn);
             Console.WriteLine(vm.DateColumn);
-            if(menu == null) {
-               Menu m = new Menu{ 
-                  DateColumn = vm.DateColumn,
+            if (menu == null) {
+                Menu m = new Menu {
+                    DateColumn = vm.DateColumn,
                 };
                 _db.Menus.Add(m);
                 _db.SaveChanges();
@@ -83,9 +83,9 @@ namespace MUC.Web.Controllers.Admin
                     MenuID = menu.ID,
                     ProductID = vm.ProductId
                 };
-                if ( _db.ProductMenus.Where(p => p.ProductID == vm.ProductId && p.MenuID == menu.ID).FirstOrDefault() is not null  ) {
+                if (_db.ProductMenus.Where(p => p.ProductID == vm.ProductId && p.MenuID == menu.ID).FirstOrDefault() is not null) {
                     ModelState.AddModelError("NewMenu", "Already in the menu of " + menu.DateColumn.ToString("MMMM dd , yyyy"));
-                  
+
                     return View(vm);
                 }
                 _db.ProductMenus.Add(pm);
@@ -97,5 +97,5 @@ namespace MUC.Web.Controllers.Admin
             return RedirectToAction("Index");
         }
 
-    } 
+    }
 }

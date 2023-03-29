@@ -1,26 +1,39 @@
 ﻿@model MUC.Models.ViewModels.MenuVM;
 
-<form asp-controller="Menu" asp-action="Create" >
-    <div asp-validation-summary="All" ></div>
+<form asp-controller="Menu" asp-action="Create">
+    <div asp-validation-summary="All"></div>
     <div class="title">Menu Information</div>
     <input hidden asp-for="ProductId" />
-    @if (Model.OneProduct is not null)
-    {
+    @if (Model.OneProduct != null) {
         <img src="@Model.OneProduct.ImgURL" />
-        <h4 >@Model.OneProduct.Title</h4>
+        <h4>@Model.OneProduct.Title</h4>
     }
-     
-    <input asp-for="DateColumn" type="date" id="date" />
-    <div class="button-group">
 
-    <button class="button glow-effect" type="submit" >
-        Add to Menu
-        <svg class="glow-container">
-            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-        </svg>
-    </button>
-        <a class="button glow-effect" asp-action="Index" asp-controller="Menu" >
+    <input asp-for="DateColumn" type="date" id="date" />
+
+    <div class="button-group">
+        {
+            <button class="button glow-effect" type="submit">
+                Delete from Menu
+                <svg class="glow-container">
+                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                </svg>
+            </button> 
+            <button class="button glow-effect" type="submit">
+                Add to Menu
+            <svg class="glow-container">
+                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+            </svg>
+        </button>
+        }
+        <script>
+
+        </script>
+        
+        
+        <a class="button glow-effect" asp-action="Index" asp-controller="Menu">
             Back
             <svg class="glow-container">
                 <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>

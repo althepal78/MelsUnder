@@ -27,7 +27,7 @@ namespace MUC.Web.Controllers.Admin
             _webHostEnvironment = webHostEnvironment;
         }
         // GET: ProductController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             var products = _db.Products.Include(c => c.Category).ToList();
             return View(products);
@@ -35,7 +35,7 @@ namespace MUC.Web.Controllers.Admin
 
         // view just one product       
         // GET: ProductController/Details/5
-        public ActionResult Details(Guid id)
+        public IActionResult Details(Guid id)
         {
             Product product = _db.Products.Include(c => c.Category).FirstOrDefault(i => i.Id == id);
             if (product == null)
@@ -46,7 +46,7 @@ namespace MUC.Web.Controllers.Admin
         }
 
         // GET: ProductController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             ProductVM productVM = new()
             {
@@ -64,7 +64,7 @@ namespace MUC.Web.Controllers.Admin
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ProductVM obj, IFormFile? file)
+        public IIActionResult Create(ProductVM obj, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace MUC.Web.Controllers.Admin
 
 
         // GET: ProductController/Edit/5
-        public ActionResult Edit(Guid id)
+        public IActionResult Edit(Guid id)
         {
             ProductVM productVM = new()
             {
@@ -118,7 +118,7 @@ namespace MUC.Web.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ProductVM obj, IFormFile? file)
+        public IIActionResult Edit(ProductVM obj, IFormFile? file)
         {
             var product = _db.Products.AsNoTracking().Include(c=> c.Category).FirstOrDefault(i => i.Id == obj.Product.Id);
             if(product== null)
@@ -165,7 +165,7 @@ namespace MUC.Web.Controllers.Admin
 
         // GET: ProductController/Delete/5
         [HttpGet]
-        public ActionResult Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
             Product product = _db.Products.FirstOrDefault(c => c.Id == id);
             return View(product);
@@ -174,7 +174,7 @@ namespace MUC.Web.Controllers.Admin
         // POST: ProductController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteProduct(Guid id)
+        public IActionResult DeleteProduct(Guid id)
         {
             Product obj = _db.Products.FirstOrDefault(i => i.Id == id);
 

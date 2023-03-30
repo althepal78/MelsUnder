@@ -64,7 +64,7 @@ namespace MUC.Web.Controllers.Admin
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IIActionResult Create(ProductVM obj, IFormFile? file)
+        public IActionResult Create(ProductVM obj, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace MUC.Web.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IIActionResult Edit(ProductVM obj, IFormFile? file)
+        public IActionResult Edit(ProductVM obj, IFormFile? file)
         {
             var product = _db.Products.AsNoTracking().Include(c=> c.Category).FirstOrDefault(i => i.Id == obj.Product.Id);
             if(product== null)

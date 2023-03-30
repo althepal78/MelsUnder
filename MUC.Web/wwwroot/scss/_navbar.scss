@@ -1,5 +1,5 @@
 ﻿
-nav {   
+nav {
     background-color: #d9d9d4;
     border-bottom: .4rem solid var(--accent);
     margin: 0 0 2rem 0;
@@ -16,7 +16,6 @@ nav {
                 gap: 1rem;
                 justify-content: space-between;
                 align-items: center;
-               
                 padding: 1rem;
 
                 .brand-logo {
@@ -70,8 +69,8 @@ nav {
                                         padding: .2rem;
 
                                         &:hover {
-                                            color: var(--text);
-                                            background-color: var(--dark);
+                                            color: var(--accent);
+                                            background-color: var(--nav-links);
                                         }
                                     }
                                 }

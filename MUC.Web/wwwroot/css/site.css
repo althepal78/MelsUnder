@@ -145,8 +145,8 @@ nav .nav-container .body aside .nav-links ul li .drop-down-menu .drop-down-links
   padding: 0.2rem;
 }
 nav .nav-container .body aside .nav-links ul li .drop-down-menu .drop-down-links a:hover {
-  color: var(--text);
-  background-color: var(--dark);
+  color: var(--accent);
+  background-color: var(--nav-links);
 }
 nav .nav-container .body aside .nav-links ul li .drop-down-menu .is-visible {
   display: grid;

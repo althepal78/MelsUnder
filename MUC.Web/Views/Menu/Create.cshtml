@@ -4,26 +4,39 @@
     <div asp-validation-summary="All"></div>
     <div class="title">Menu Information</div>
     <input hidden asp-for="ProductId" />
+
+    <input asp-for="DateColumn" type="date" id="myDate" value='@DateTime.Now.ToString("yyyy-MM-dd")' />
     @if (Model.OneProduct != null)
     {
-        List<DateOnly> dateArray = new List<DateOnly>();
-        foreach (var menuDates in Model.OneProduct.ProductMenus)
-        {
-            dateArray.Add(menuDates.Menu.DateColumn);
-        }
-       foreach (var item in dateArray)
-        {
-            Console.WriteLine(item);
-        }
         <img src="@Model.OneProduct.ImgURL" />
         <h4>@Model.OneProduct.Title</h4>
+        <script>
+            function loadFunction() {
+                let myDateListJson = '@Html.Raw(ViewBag.Dates)';
+                let inputDate = document.getElementById("myDate");
+
+                let myDateList = JSON.parse(myDateListJson).map((dateStr) => {
+                    if (inputDate.value == dateStr) {
+                        console.log("something equals", dateStr)
+                    }
+                    inputDate.addEventListener('change', event => {
+                        if (inputDate.value == dateStr) {
+                            console.log("something equals", dateStr)
+                        }
+                    })
+                    return new Date(dateStr);
+
+                });
+            }
+
+            window.onload = loadFunction;
+        </script>
     }
 
-    <input asp-for="DateColumn" type="date"  id="date" />
 
     <div class="button-group">
         {
-        <button class="button glow-effect" type="submit">
+        <button asp-action="Delete" asp-controller="Menu" class="button glow-effect" type="submit">
             Delete from Menu
             <svg class="glow-container">
                 <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
@@ -38,12 +51,8 @@
             </svg>
         </button>
         }
-        <script>
 
-        </script>
-
-
-        <a class="button glow-effect" asp-action="Index" asp-controller="Menu">
+        <a role="button" class="button glow-effect" asp-action="Index" asp-controller="Menu">
             Back
             <svg class="glow-container">
                 <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>

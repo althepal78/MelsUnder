@@ -1,14 +1,13 @@
 ﻿
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MUC.DataAccess.Data;
 using MUC.Models;
 using MUC.Models.ViewModels;
 using MUC.Utilities;
+using Newtonsoft.Json;
 using System.Data;
-using System.Net.WebSockets;
 
 namespace MUC.Web.Controllers.Admin
 {
@@ -49,7 +48,17 @@ namespace MUC.Web.Controllers.Admin
             MenuVM vm = new MenuVM();
             vm.OneProduct = _db.Products.Include(s => s.ProductMenus).ThenInclude(m => m.Menu).FirstOrDefault(p => p.Id == pid);
             vm.ProductId = pid;
-           
+             List<DateOnly>DateList = new List<DateOnly>();
+            if(vm.OneProduct.ProductMenus != null)
+            {
+                foreach (var item in vm.OneProduct.ProductMenus)
+                {
+                    DateList.Add(item.Menu.DateColumn);
+                }
+                string json = JsonConvert.SerializeObject(DateList, new JsonSerializerSettings { DateFormatString = "yyyy-MM-dd" });
+                ViewBag.Dates = json;
+            }
+                   
             return View(vm);
         }
 

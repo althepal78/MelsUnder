@@ -38,9 +38,13 @@ try {
 
   /// just for the date
 try {
-    window.addEventListener('DOMContentLoaded', () => {
-        document.getElementById("date").valueAsDate = new Date(Date.now());
-    });
-}catch (error) {
-    console.error(error);
+    // Get today's date in YYYY-MM-DD format
+    const today = new Date().toISOString().substr(0, 10);
+
+    // Set the value of the input to today's date
+    document.getElementById("myDate").value = today;
+
+} catch (error) {
+    // Code to handle the exception
+    console.error("An error occurred:", error);
 }

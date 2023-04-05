@@ -407,6 +407,9 @@ form .button-group {
   align-items: center;
   border-radius: 0 0 0.5rem 0.5rem;
 }
+form .button-group [aria-hidden=true] {
+  display: none;
+}
 form .button-group .button, form .button-group button {
   color: var(--accent);
   font-size: var(--nav-font);

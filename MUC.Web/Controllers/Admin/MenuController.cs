@@ -26,7 +26,7 @@ namespace MUC.Web.Controllers.Admin
         {
             var date = DateOnly.FromDateTime(DateTime.Now);
             Menu todayMenu = _db.Menus.
-                              Where(d => d.DateColumn == DateOnly.FromDateTime(DateTime.Now)).
+                              Where(d => d.DateColumn == date).
                               Include(pm => pm.ProductMenus).
                               ThenInclude(p => p.Product).
                               FirstOrDefault();
@@ -48,8 +48,8 @@ namespace MUC.Web.Controllers.Admin
             MenuVM vm = new MenuVM();
             vm.OneProduct = _db.Products.Include(s => s.ProductMenus).ThenInclude(m => m.Menu).FirstOrDefault(p => p.Id == pid);
             vm.ProductId = pid;
-             List<DateOnly>DateList = new List<DateOnly>();
-            if(vm.OneProduct.ProductMenus != null)
+            List<DateOnly> DateList = new List<DateOnly>();
+            if (vm.OneProduct.ProductMenus != null)
             {
                 foreach (var item in vm.OneProduct.ProductMenus)
                 {
@@ -58,7 +58,7 @@ namespace MUC.Web.Controllers.Admin
                 string json = JsonConvert.SerializeObject(DateList, new JsonSerializerSettings { DateFormatString = "yyyy-MM-dd" });
                 ViewBag.Dates = json;
             }
-                   
+
             return View(vm);
         }
 
@@ -109,6 +109,27 @@ namespace MUC.Web.Controllers.Admin
                 _db.SaveChanges();
             }
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(Guid pid, DateOnly date)
+        {
+            Menu deleteIt = _db.Menus.Include(p => p.ProductMenus).FirstOrDefault(d => d.DateColumn == date);
+
+            if (deleteIt != null)
+            {
+                foreach (var item in deleteIt.ProductMenus.ToList())
+                {
+                   if(item.ProductID == pid)
+                    {
+                        ProductMenu pm = _db.ProductMenus.FirstOrDefault(p => p.ProductID == item.ProductID && p.MenuID == item.MenuID);
+                        _db.ProductMenus.Remove(pm);
+                        _db.SaveChanges();
+                    }
+                }
+
+            }
             return RedirectToAction("Index");
         }
 

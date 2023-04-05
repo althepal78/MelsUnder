@@ -42,9 +42,9 @@ try {
     const today = new Date().toISOString().substr(0, 10);
 
     // Set the value of the input to today's date
-    document.getElementById("myDate").value = today;
+    document.getElementById("inputDate").value = today;
 
 } catch (error) {
     // Code to handle the exception
-    console.error("An error occurred:", error);
+    console.error("An error occurred:" + error);
 }

@@ -5,45 +5,55 @@
     <div class="title">Menu Information</div>
     <input hidden asp-for="ProductId" />
 
-    <input asp-for="DateColumn" type="date" id="myDate" value='@DateTime.Now.ToString("yyyy-MM-dd")' />
+    <input asp-for="DateColumn" type="date" id="inputDate" value='@DateTime.Now.ToString("yyyy-MM-dd")' />
     @if (Model.OneProduct != null)
     {
         <img src="@Model.OneProduct.ImgURL" />
         <h4>@Model.OneProduct.Title</h4>
-        <script>
+
+        <script type="text/javascript">
             function loadFunction() {
                 let myDateListJson = '@Html.Raw(ViewBag.Dates)';
-                let inputDate = document.getElementById("myDate");
-
+                let inputDate = document.getElementById("inputDate"); 
+                let createIt = document.querySelectorAll("[data-create]");
+                const id = '@Model.ProductId';
+                const url = createIt[0].href;
+                console.log(url)
                 let myDateList = JSON.parse(myDateListJson).map((dateStr) => {
+                  
                     if (inputDate.value == dateStr) {
-                        console.log("something equals", dateStr)
+                        createIt[0].ariaHidden = "false";
+                        createIt[1].ariaHidden = "true";
+                        createIt[0].href += `&date=${dateStr}`;                       
                     }
-                    inputDate.addEventListener('change', event => {
+                    inputDate.addEventListener('change', (event) => {
                         if (inputDate.value == dateStr) {
-                            console.log("something equals", dateStr)
+                            createIt[0].ariaHidden = "false";
+                            createIt[1].ariaHidden = "true";
+                            createIt[0].href += `&date=${dateStr}`;
+                            console.log(inputDate.value);
+                        }else if(inputDate.value != dateStr){
+                            createIt[0].ariaHidden = "true";
+                            createIt[1].ariaHidden = "false"
                         }
                     })
                     return new Date(dateStr);
-
                 });
             }
-
             window.onload = loadFunction;
         </script>
     }
-
-
     <div class="button-group">
         {
-        <button asp-action="Delete" asp-controller="Menu" class="button glow-effect" type="submit">
+        <a asp-action="Delete" asp-controller="Menu" asp-route-pid="@Model.ProductId" 
+           aria-hidden="true" data-create="delete" class="button glow-effect">
             Delete from Menu
             <svg class="glow-container">
                 <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
                 <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
             </svg>
-        </button>
-        <button class="button glow-effect" type="submit">
+        </a>
+        <button aria-hidden="false" data-create="create" class="button glow-effect" type="submit">
             Add to Menu
             <svg class="glow-container">
                 <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
@@ -61,6 +71,7 @@
         </a>
     </div>
 </form>
+
 @section Scripts{
     @{
 

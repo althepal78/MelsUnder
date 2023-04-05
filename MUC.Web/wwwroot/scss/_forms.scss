@@ -61,9 +61,15 @@
         align-items: center;
         border-radius: 0 0 .5rem .5rem;
 
+        [aria-hidden="true"]{
+            display:none;
+        }
+
         .button, button {
             color: var(--accent);
             font-size: var(--nav-font);
         }
     }
+
 }
+

@@ -1,109 +1,116 @@
 ﻿
-nav {
-    background-color: #d9d9d4;
+header {
+    background-color: var(--background);
     border-bottom: .4rem solid var(--accent);
     margin: 0 0 2rem 0;
     cotainer-type: inline-size;
 
-    .nav-container {
-        .body {
-            .hamburger-menu {
-                display: none;
-            }
+    li {
+        list-style: none;
+    }
 
-            aside {
-                display: flex;
-                gap: 1rem;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem;
+    .navbar {
+        min-height: 4.4rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        z-index: 6;
 
-                .brand-logo {
-                    margin-left: 2rem;
+        .nav-branding {
+            border-radius: 50%;
+            margin-left: 2rem;
+            width: 10rem;
+        }
 
-                    img {
-                        width: clamp(4rem, 20vw, 12rem);
-                        border-radius: 50%;
+        .nav-menu {
+            display: flex;
+            margin-right: 1.5rem;
+            gap: 2.5rem;
+            z-index: 6;
+
+            .nav-item {
+                display: inline;
+                margin: 0 2rem;
+                list-style-type: none;
+                z-index: 6;
+
+                .drop-down-menu {
+                    position: relative;
+                    font-size: var(--nav-font);
+                    z-index: 6;
+
+                    button {
+                        color: var(--accent);
+                        font-size: var(--body-font);
+                        border-radius: .3rem .3rem 0 0;
+                        padding: .2rem;
                     }
-                }
 
-                .nav-links {
-                    display: flex;
-                    justify-content: end;
-                    margin-right: 1.5rem;
+                    .drop-down-links {
+                        display: grid;
+                        position: absolute;
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: all .8s ease-in-out;
+                        top: calc(100% + .2rem);
+                        left: .1rem;
+                        width: 98%;
+                        z-index: 6;
 
-                    ul {
-                        display: flex;
-                        align-items: center;
+                        a {
+                            color: var(--accent);
+                            padding: .2rem;
 
-                        li {
-                            display: inline;
-                            margin: 0 2rem;
-                            list-style-type: none;
+                            &:hover {
+                                color: var(--accent);
+                                background-color: var(--nav-links);
+                            }
+                        }
+                    }
 
+                    .is-visible {
+                        display: grid;
+                        width: 98%;
+                        opacity: 1;
+                        position: absolute;
+                        top: calc(100% + .2rem);
+                        left: .1rem;
+                        z-index: 100;
+                        pointer-events: auto;
+                        border-radius: 0 0 .3rem .3rem;
+                        transform: translateY(.2rem);
+                        transition: all .5s ease-in-out;
+                        color: var(--text);
+                        background-color: var(--background);
+                        box-shadow: 4px 4px 8px var(--accent);
 
+                        a {
+                            padding: .2rem;
 
-                            .drop-down-menu {
-                                position: relative;
-                                font-size: var(--nav-font);
-
-                                button {
-                                    color: var(--accent);
-                                    font-size: var(--body-font);
-                                    border-radius: .3rem .3rem 0 0;
-                                    padding: .2rem;
-                                }
-
-                                .drop-down-links {
-                                    display: grid;
-                                    position: absolute;
-                                    opacity: 0;
-                                    pointer-events: none;
-                                    transition: all .8s ease-in-out;
-                                    top: calc(100% + .2rem);
-                                    left: .1rem;
-                                    width: 98%;
-
-                                    a {
-                                        color: var(--accent);
-                                        padding: .2rem;
-
-                                        &:hover {
-                                            color: var(--accent);
-                                            background-color: var(--nav-links);
-                                        }
-                                    }
-                                }
-
-                                .is-visible {
-                                    display: grid;
-                                    width: 98%;
-                                    opacity: 1;
-                                    position: absolute;
-                                    top: calc(100% + .2rem);
-                                    left: .1rem;
-                                    z-index: 100;
-                                    pointer-events: auto;
-                                    border-radius: 0 0 .3rem .3rem;
-                                    transform: translateY(.2rem);
-                                    transition: all .5s ease-in-out;
-                                    color: var(--text);
-                                    background-color: var(--background);
-                                    box-shadow: 4px 4px 8px var(--accent);
-
-                                    a {
-                                        padding: .2rem;
-
-                                        &:hover {
-                                            background-color: var(--accent);
-                                            color: var(--background);
-                                        }
-                                    }
-                                }
+                            &:hover {
+                                background-color: var(--accent);
+                                color: var(--background);
                             }
                         }
                     }
                 }
+            }
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 6;
+
+            .bar {
+                display: block;
+                width: 1.6rem;
+                height: .18rem;
+                margin: .4rem auto;
+                transition: all .3s ease-in-out;
+                background-color: var(--accent);
             }
         }
     }

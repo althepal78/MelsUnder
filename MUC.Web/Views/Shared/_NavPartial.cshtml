@@ -3,89 +3,85 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 @*the nav is on the layout so we in the nav and class navbar*@
-<div class="nav-container">
-    <div class="body">
-      
 
-        <label class="hamburger-menu">
-            <input type="checkbox" />
-        </label>
-        <aside class="sidebar">
-            <div class="brand-logo">
-                <img src="/images/melysSmallLogo.jpg" alt="brand-logo" aria-label="Mellys Brand" />
-            </div>
-            <div class="nav-links">
-                <ul>
-                    <li>
-                        <a class="glow-effect" asp-controller="Customer"
-                           asp-action="Index">
-                            Home
-                            <svg class="glow-container">
-                                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                            </svg>
+<nav class="navbar">
+    <img class="nav-branding" src="/images/melysSmallLogo.jpg" alt="brand-logo" aria-label="Mellys Brand" />
+
+    <ul class="nav-menu">
+        <li class="nav-item">
+            <a class="glow-effect nav-link" asp-controller="Customer"
+               asp-action="Index">
+                Home
+                <svg class="glow-container">
+                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="glow-effect nav-link" asp-controller="Menu"
+               asp-action="DailyMenu">
+                Daily Menu
+                <svg class="glow-container">
+                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                </svg>
+            </a>
+        </li>
+        @if (User.IsInRole(StaticDetails.Role_Admin))
+        {
+
+            <li class="nav-item">
+                <div class="drop-down-menu" data-dropdown-menu>
+                    <button id="dropdown-button" data-dropdown-button>Dashboard &#11143;</button>
+                    <div class="drop-down-links" data-dropdown-links>
+                        <a asp-controller="Category" asp-action="Index">
+                            Category
                         </a>
-                    </li>
-                    <li>
-                        <a class="glow-effect" asp-controller="Menu"
-                           asp-action="DailyMenu">
-                            Daily Menu
-                            <svg class="glow-container">
-                                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                            </svg>
+
+                        <a asp-controller="Product" asp-action="Index">
+                            Food/Drinks
                         </a>
-                    </li>
-                    @if (User.IsInRole(StaticDetails.Role_Admin)) {
 
-                        <li>
-                            <div class="drop-down-menu" data-dropdown-menu>
-                                <button id="dropdown-button" data-dropdown-button>Dashboard &#11143;</button>
-                                <div class="drop-down-links" data-dropdown-links>
-                                    <a asp-controller="Category" asp-action="Index">
-                                        Category
-                                    </a>
+                        <a asp-controller="Menu" asp-action="Index">
+                            Menu Creater
+                        </a>
+                    </div>
+                </div>
+            </li>
 
-                                    <a asp-controller="Product" asp-action="Index">
-                                        Food/Drinks
-                                    </a>
+            <li class="nav-item">
+                <!-- this is the logout -->
+                <a class="glow-effect nav-link" asp-controller="Login"
+                   asp-action="Logout">
+                    Log Out
+                    <svg class="glow-container">
+                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                    </svg>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="glow-effect nav-link" asp-controller="Login"
+                   asp-action="Login">
+                    Login
+                    <svg class="glow-container">
+                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+                    </svg>
+                </a>
+            </li>
+        }
+    </ul>
 
-                                    <a asp-controller="Menu" asp-action="Index">
-                                        Menu Creater
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- this is the logout -->
-                            <a class="glow-effect" asp-controller="Login"
-                           asp-action="Logout">
-                                Log Out
-                                <svg class="glow-container">
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
-                            </a>
-                        </li>
-                    }
-                    else {
-                        <li>
-                            <a class="glow-effect" asp-controller="Login"
-                           asp-action="Login">
-                                Login
-                                <svg class="glow-container">
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
-                            </a>
-                        </li>
-                    }
-                </ul>
-
-            </div>
-        </aside>
-        <!-- end nav-wrapper -->
+    <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
     </div>
-</div>
+
+</nav>
 <!-- end nav container-->

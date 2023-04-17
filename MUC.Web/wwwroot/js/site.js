@@ -1,4 +1,11 @@
 ﻿
+// hamburger menu 
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+})
 
 document.addEventListener("click", e => {
     // for the dropdown menu on the navbar
@@ -48,3 +55,5 @@ try {
     // Code to handle the exception
     console.error("An error occurred:" + error);
 }
+
+// for the hamburger menu

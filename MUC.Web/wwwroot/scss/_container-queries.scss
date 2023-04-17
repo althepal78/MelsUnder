@@ -1,8 +1,89 @@
 ﻿
-@container (width <= 900px) {
+@media (max-width: 900px) {
+    header {
+        z-index:6;
+        .navbar {
+            font-size: clamp(.8rem, 5dvw, 1.2rem);
 
-    .nav-container{
-        background-color: black;
-        min-height:100vh;
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        .nav-menu {
+            position: fixed;
+            left: -100%;
+            top: 12.5rem;
+            gap: 0;
+            flex-direction: column;
+            background-color: var(--background);
+            width: 100%;
+            text-align: center;
+            transition: .3s;
+
+            .nav-item {
+                .drop-down-menu {
+                    .is-visible{
+                        background-color: var(--background);
+
+                        a {
+                            z-index: 8;
+                            background-color: var(--background);
+                        }
+                    }
+                }
+            }
+        }
+
+        .nav-link {
+            margin-top: .2rem;
+        }
+
+        .nav-menu.active {
+            left: 0;
+        }
+    }
+
+
+    main {
+        .menu-container {
+            display: block;
+            margin-left: 2rem;
+
+            .grid-container {
+                display: block;
+
+                .menu-image {
+                    width: 15rem;
+                    position: static;
+                }
+
+                .title-description {
+                    display: block;
+                    position: static;
+                    width: 2rem;
+
+                    p {
+                        overflow: hidden;
+                    }
+
+                    a {
+                        position: static;
+                    }
+                }
+            }
+        }
     }
 }

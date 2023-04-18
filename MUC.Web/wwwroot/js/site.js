@@ -12,10 +12,12 @@ document.addEventListener("click", e => {
 
     try {
         const dropdownLinks = document.querySelector("[data-dropdown-links]");
+        const logoutBtn = document.querySelector("[data-logout]");
 
         if (e.target.matches("[data-dropdown-button]")) {
             dropdownLinks.classList.toggle("is-visible");
-            console.log("did it work")
+            logoutBtn.classList.toggle('d-none');
+            
         }
 
         if (!e.target.matches("[data-dropdown-button]") && dropdownLinks.classList.contains("is-visible")) {

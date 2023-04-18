@@ -35,17 +35,28 @@
             text-align: center;
             transition: .3s;
             height: 80vh;
+            z-index: 1;
+
+            .d-none {
+                display: none;
+                transition: all .2s ease-in-out;
+            }
 
             .dd {
                 display: block;
-                .drop-down-menu {
-                    position:relative;
+                z-index: 200;
 
-                   .drop-down-links.is-visible, .drop-down-links{   
-                      background-color: lightblue;
-                      position:absolute;
-                      left:0;
-                      z-index:200;
+                .drop-down-menu {
+                    z-index: 200;
+                    position: relative;
+
+                    .drop-down-links.is-visible, .drop-down-links {
+                        text-align: left;
+                        position: absolute;
+                        left: 42%;
+                        top: 100%;
+                        width: 8rem;
+                        z-index: 200;
                     }
                 }
             }
@@ -57,31 +68,85 @@
         }
     }
 
-
     main {
-        .menu-container {
+        table{
+            font-size: .8rem;
+            min-width: 40rem;
+            .button{
+                padding: 0;
+            }
+        }
+      
+        .menu-container, .menu-container * {
+            all: initial;
             display: block;
-            margin-left: 2rem;
+        }
+
+        .menu-container {
+           width: 35dvw;
+            margin: 0 auto;
+            p{
+                text-align:center;
+                font-size:1.4rem;
+                color: var(--accent);
+            }
+
+            .grid-container, .grid-container * {
+                all: initial;
+                display: block;
+            }
 
             .grid-container {
-                display: block;
+                width: 100%;
+                margin: 1.5rem auto;
+                text-align: center;
 
                 .menu-image {
-                    width: 15rem;
-                    position: static;
+                    img {
+                        width: 20rem;
+                        border-radius: 2rem;
+                    }
+                }
+
+                .title-description, .title-description * {
+                    all: initial;
+                    display: block;
                 }
 
                 .title-description {
-                    display: block;
-                    position: static;
-                    width: 2rem;
+                    text-align: center;
+                    background-color: var(--accent);
+                    width: 20rem;
+                    height: 5rem;
+                    padding: .4rem 0;
 
                     p {
-                        overflow: hidden;
+                        font-size: clamp(.5rem, 2vw, 1.8rem);
+                        margin: .3rem auto;
+                        color: var(--h3);
+                        overflow-wrap: break-word;
+                        text-align: center;
                     }
 
-                    a {
-                        position: static;
+                    .button {
+                        cursor: pointer;
+                        background-color: var(--background);
+                        color: var(--accent);
+                        width: 8rem;
+                        margin: 1.3rem auto;
+                        text-align: center;
+                        border-radius: 3px;
+
+                        &:hover {
+                            --background-hover: var(--background); /* define a new color variable for the hover state */
+                            filter: brightness(0.8); /* apply the brightness filter to the variable color on hover */
+                            box-shadow: 3px 3px 3px var(--background-hover);
+                            font-size: 1.2rem;
+                        }
+                    }
+
+                    .glow-container {
+                        display: none;
                     }
                 }
             }

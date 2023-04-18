@@ -15,12 +15,6 @@
   --nav-font: clamp(.2rem, 1.5vw, 1.2rem);
   --input-font: clamp(.4rem, 5vw, 1.5rem);
   --validation: clamp(0.8rem, 25vw, 24.5rem);
-  --bar-width: 60px;
-  --bar-height: 8px;
-  --hamburger-gap: 6px;
-  --hamburger-margin: 8px;
-  --animation-timing: 200ms ease-in-out;
-  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
 }
 
 *,
@@ -623,42 +617,98 @@ i {
     text-align: center;
     transition: 0.3s;
     height: 80vh;
+    z-index: 1;
+  }
+  header .nav-menu .d-none {
+    display: none;
+    transition: all 0.2s ease-in-out;
   }
   header .nav-menu .dd {
     display: block;
+    z-index: 200;
   }
   header .nav-menu .dd .drop-down-menu {
+    z-index: 200;
     position: relative;
   }
   header .nav-menu .dd .drop-down-menu .drop-down-links.is-visible, header .nav-menu .dd .drop-down-menu .drop-down-links {
-    background-color: lightblue;
+    text-align: left;
     position: absolute;
-    left: 0;
+    left: 42%;
+    top: 100%;
+    width: 8rem;
     z-index: 200;
   }
   header .nav-menu.active {
     left: 0;
   }
-  main .menu-container {
+  main table {
+    font-size: 0.8rem;
+    min-width: 40rem;
+  }
+  main table .button {
+    padding: 0;
+  }
+  main .menu-container, main .menu-container * {
+    all: initial;
     display: block;
-    margin-left: 2rem;
+  }
+  main .menu-container {
+    width: 35dvw;
+    margin: 0 auto;
+  }
+  main .menu-container p {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+  main .menu-container .grid-container, main .menu-container .grid-container * {
+    all: initial;
+    display: block;
   }
   main .menu-container .grid-container {
-    display: block;
+    width: 100%;
+    margin: 1.5rem auto;
+    text-align: center;
   }
-  main .menu-container .grid-container .menu-image {
-    width: 15rem;
-    position: static;
+  main .menu-container .grid-container .menu-image img {
+    width: 20rem;
+    border-radius: 2rem;
+  }
+  main .menu-container .grid-container .title-description, main .menu-container .grid-container .title-description * {
+    all: initial;
+    display: block;
   }
   main .menu-container .grid-container .title-description {
-    display: block;
-    position: static;
-    width: 2rem;
+    text-align: center;
+    background-color: var(--accent);
+    width: 20rem;
+    height: 5rem;
+    padding: 0.4rem 0;
   }
   main .menu-container .grid-container .title-description p {
-    overflow: hidden;
+    font-size: clamp(0.5rem, 2vw, 1.8rem);
+    margin: 0.3rem auto;
+    color: var(--h3);
+    overflow-wrap: break-word;
+    text-align: center;
   }
-  main .menu-container .grid-container .title-description a {
-    position: static;
+  main .menu-container .grid-container .title-description .button {
+    cursor: pointer;
+    background-color: var(--background);
+    color: var(--accent);
+    width: 8rem;
+    margin: 1.3rem auto;
+    text-align: center;
+    border-radius: 3px;
+  }
+  main .menu-container .grid-container .title-description .button:hover {
+    --background-hover: var(--background); /* define a new color variable for the hover state */
+    filter: brightness(0.8); /* apply the brightness filter to the variable color on hover */
+    box-shadow: 3px 3px 3px var(--background-hover);
+    font-size: 1.2rem;
+  }
+  main .menu-container .grid-container .title-description .glow-container {
+    display: none;
   }
 }

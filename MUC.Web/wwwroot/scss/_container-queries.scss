@@ -1,8 +1,10 @@
 ﻿
 @media (max-width: 900px) {
     header {
-        z-index:6;
+        z-index: 6;
+
         .navbar {
+            position: relative;
             font-size: clamp(.8rem, 5dvw, 1.2rem);
 
             .hamburger {
@@ -16,7 +18,7 @@
             .hamburger.active .bar:nth-child(2) {
                 opacity: 0;
             }
-             
+
             .hamburger.active .bar:nth-child(3) {
                 transform: translateY(-8px) rotate(-45deg);
             }
@@ -32,24 +34,23 @@
             width: 100%;
             text-align: center;
             transition: .3s;
+            height: 80vh;
 
-            .nav-item {
+            .dd {
+                display: block;
                 .drop-down-menu {
-                    .is-visible{
-                        background-color: var(--background);
+                    position:relative;
 
-                        a {
-                            z-index: 8;
-                            background-color: var(--background);
-                        }
+                   .drop-down-links.is-visible, .drop-down-links{   
+                      background-color: lightblue;
+                      position:absolute;
+                      left:0;
+                      z-index:200;
                     }
                 }
             }
         }
 
-        .nav-link {
-            margin-top: .2rem;
-        }
 
         .nav-menu.active {
             left: 0;

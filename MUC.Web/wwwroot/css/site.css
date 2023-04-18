@@ -597,6 +597,7 @@ i {
     z-index: 6;
   }
   header .navbar {
+    position: relative;
     font-size: clamp(0.8rem, 5dvw, 1.2rem);
   }
   header .navbar .hamburger {
@@ -621,16 +622,19 @@ i {
     width: 100%;
     text-align: center;
     transition: 0.3s;
+    height: 80vh;
   }
-  header .nav-menu .nav-item .drop-down-menu .is-visible {
-    background-color: var(--background);
+  header .nav-menu .dd {
+    display: block;
   }
-  header .nav-menu .nav-item .drop-down-menu .is-visible a {
-    z-index: 8;
-    background-color: var(--background);
+  header .nav-menu .dd .drop-down-menu {
+    position: relative;
   }
-  header .nav-link {
-    margin-top: 0.2rem;
+  header .nav-menu .dd .drop-down-menu .drop-down-links.is-visible, header .nav-menu .dd .drop-down-menu .drop-down-links {
+    background-color: lightblue;
+    position: absolute;
+    left: 0;
+    z-index: 200;
   }
   header .nav-menu.active {
     left: 0;

@@ -13,6 +13,6 @@ namespace MUC.Models
         [DisplayName("Display Order")]
         [Range(1, 100, ErrorMessage = "No, 1 to 100 only")]
         public int DisplayOrder { get; set; }
-        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
+        public DateTime CreatedDateTime { get; set; } = DateTime.UtcNow;
     }
 }

@@ -7,7 +7,7 @@ namespace MUC.Models.ViewModels {
         public Guid MenuId { get; set; }
 
         [PastDate]
-        public DateOnly DateColumn { get; set; }
+        public DateTime DateColumn { get; set; }
 
         [ValidateNever]
         public Product? OneProduct { get; set; }

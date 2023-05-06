@@ -24,7 +24,7 @@ namespace MUC.Web.Controllers.Admin
         [AllowAnonymous]
         public IActionResult DailyMenu()
         {
-            var date = DateOnly.FromDateTime(DateTime.Now);
+            var date = DateTime.Now;
             Menu todayMenu = _db.Menus.
                               Where(d => d.DateColumn == date).
                               Include(pm => pm.ProductMenus).
@@ -48,7 +48,7 @@ namespace MUC.Web.Controllers.Admin
             MenuVM vm = new MenuVM();
             vm.OneProduct = _db.Products.Include(s => s.ProductMenus).ThenInclude(m => m.Menu).FirstOrDefault(p => p.Id == pid);
             vm.ProductId = pid;
-            List<DateOnly> DateList = new List<DateOnly>();
+            List<DateTime> DateList = new List<DateTime>();
             if (vm.OneProduct.ProductMenus != null)
             {
                 foreach (var item in vm.OneProduct.ProductMenus)
@@ -113,7 +113,7 @@ namespace MUC.Web.Controllers.Admin
         }
 
         [HttpGet]
-        public IActionResult Delete(Guid pid, DateOnly date)
+        public IActionResult Delete(Guid pid, DateTime date)
         {
             Menu deleteIt = _db.Menus.Include(p => p.ProductMenus).FirstOrDefault(d => d.DateColumn == date);
 

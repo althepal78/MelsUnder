@@ -10,7 +10,7 @@ namespace MUC.Models
 
 
         [PastDate]
-        public DateOnly DateColumn { get; set; }
+        public DateTime DateColumn { get; set; }
 
         public ICollection<ProductMenu>? ProductMenus { get; set; }
 

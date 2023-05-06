@@ -16,16 +16,7 @@ namespace MUC.DataAccess.Data
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ProductMenu> ProductMenus { get; set; }
     
-        public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
-        {
-            /// <summary>
-            /// Creates a new instance of this converter.
-            /// </summary>
-            public DateOnlyConverter() : base(
-                    d => d.ToDateTime(TimeOnly.MinValue),
-                    d => DateOnly.FromDateTime(d))
-            { }
-        }
+  
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

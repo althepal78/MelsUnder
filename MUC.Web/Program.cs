@@ -8,9 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-    builder.Configuration.GetConnectionString("DBInfo")
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DBInfo")
     ));
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();

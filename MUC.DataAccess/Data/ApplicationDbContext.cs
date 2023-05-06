@@ -15,12 +15,7 @@ namespace MUC.DataAccess.Data
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ProductMenu> ProductMenus { get; set; }
-        protected override void ConfigureConventions(ModelConfigurationBuilder builder)
-        {
-            builder.Properties<DateOnly>()
-                   .HaveConversion<DateOnlyConverter>()
-                   .HaveColumnType("date");
-        }
+    
         public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
         {
             /// <summary>

@@ -5,7 +5,7 @@
     <div class="title">Menu Information</div>
     <input hidden asp-for="ProductId" />
 
-    <input asp-for="DateColumn" type="date" id="inputDate" value='@DateTime.Now.ToString("yyyy-MM-dd")' />
+    <input asp-for="DateColumn" type="date" id="inputDate" value='@DateTime.UtcNow.ToString("yyyy-MM-dd")' />
     @if (Model.OneProduct != null)
     {
         <img src="@Model.OneProduct.ImgURL" />

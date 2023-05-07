@@ -24,9 +24,9 @@ namespace MUC.Web.Controllers.Admin
         [AllowAnonymous]
         public IActionResult DailyMenu()
         {
-            var date = DateTime.Now;
+            var date = DateTime.UtcNow;
             Menu todayMenu = _db.Menus.
-                              Where(d => d.DateColumn == date).
+                              Where(d => d.DateColumn.ToUniversalTime() == date.ToUniversalTime()).
                               Include(pm => pm.ProductMenus).
                               ThenInclude(p => p.Product).
                               FirstOrDefault();
@@ -73,13 +73,13 @@ namespace MUC.Web.Controllers.Admin
 
                 return View(vm);
             }
-            Menu menu = _db.Menus.FirstOrDefault(m => m.DateColumn == vm.DateColumn);
+            Menu menu = _db.Menus.FirstOrDefault(m => m.DateColumn.ToUniversalTime() == vm.DateColumn.ToUniversalTime());
             Console.WriteLine(vm.DateColumn);
             if (menu == null)
             {
                 Menu m = new Menu
                 {
-                    DateColumn = vm.DateColumn,
+                    DateColumn = vm.DateColumn.ToUniversalTime(),
                 };
                 _db.Menus.Add(m);
                 _db.SaveChanges();
@@ -115,13 +115,13 @@ namespace MUC.Web.Controllers.Admin
         [HttpGet]
         public IActionResult Delete(Guid pid, DateTime date)
         {
-            Menu deleteIt = _db.Menus.Include(p => p.ProductMenus).FirstOrDefault(d => d.DateColumn == date);
+            Menu deleteIt = _db.Menus.Include(p => p.ProductMenus).FirstOrDefault(d => d.DateColumn.ToUniversalTime() == date.ToUniversalTime());
 
             if (deleteIt != null)
             {
                 foreach (var item in deleteIt.ProductMenus.ToList())
                 {
-                   if(item.ProductID == pid)
+                    if (item.ProductID == pid)
                     {
                         ProductMenu pm = _db.ProductMenus.FirstOrDefault(p => p.ProductID == item.ProductID && p.MenuID == item.MenuID);
                         _db.ProductMenus.Remove(pm);

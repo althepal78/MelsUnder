@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.EntityFrameworkCore;
 using MUC.DataAccess.Data;
 using MUC.Models;
@@ -23,13 +24,13 @@ namespace MUC.Web.Controllers.Admin
 
         [AllowAnonymous]
         public IActionResult DailyMenu()
-        {
-            var date = DateTime.UtcNow;
-            Menu todayMenu = _db.Menus.
-                              Where(d => d.DateColumn.ToUniversalTime() == date.ToUniversalTime()).
-                              Include(pm => pm.ProductMenus).
-                              ThenInclude(p => p.Product).
-                              FirstOrDefault();
+        { 
+           Menu todayMenu = _db.Menus.Where(theDate => theDate.DateColumn == DateTime.Today)
+                            .Include(pm => pm.ProductMenus)
+                            .ThenInclude(p => p.Product)
+                            .FirstOrDefault();
+        
+
             return View(todayMenu);
         }
 
@@ -53,7 +54,10 @@ namespace MUC.Web.Controllers.Admin
             {
                 foreach (var item in vm.OneProduct.ProductMenus)
                 {
-                    DateList.Add(item.Menu.DateColumn);
+
+                    DateTime kind = item.Menu.DateColumn;
+
+                    DateList.Add(kind);
                 }
                 string json = JsonConvert.SerializeObject(DateList, new JsonSerializerSettings { DateFormatString = "yyyy-MM-dd" });
                 ViewBag.Dates = json;
@@ -68,18 +72,19 @@ namespace MUC.Web.Controllers.Admin
         public IActionResult Create(MenuVM vm)
         {
             vm.OneProduct = _db.Products.FirstOrDefault(p => p.Id == vm.ProductId);
+
             if (!ModelState.IsValid)
             {
-
                 return View(vm);
             }
-            Menu menu = _db.Menus.FirstOrDefault(m => m.DateColumn.ToUniversalTime() == vm.DateColumn.ToUniversalTime());
+            Menu menu = _db.Menus.FirstOrDefault(m => m.DateColumn == vm.DateColumn);
             Console.WriteLine(vm.DateColumn);
             if (menu == null)
             {
+
                 Menu m = new Menu
                 {
-                    DateColumn = vm.DateColumn.ToUniversalTime(),
+                    DateColumn = vm.DateColumn,
                 };
                 _db.Menus.Add(m);
                 _db.SaveChanges();
@@ -115,7 +120,8 @@ namespace MUC.Web.Controllers.Admin
         [HttpGet]
         public IActionResult Delete(Guid pid, DateTime date)
         {
-            Menu deleteIt = _db.Menus.Include(p => p.ProductMenus).FirstOrDefault(d => d.DateColumn.ToUniversalTime() == date.ToUniversalTime());
+            Menu deleteIt = _db.Menus.Include(p => p.ProductMenus)
+                .FirstOrDefault(d => d.DateColumn == date);
 
             if (deleteIt != null)
             {

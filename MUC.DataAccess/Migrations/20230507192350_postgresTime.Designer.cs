@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MUC.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230506050026_postsql3")]
-    partial class postsql3
+    [Migration("20230507192350_postgresTime")]
+    partial class postgresTime
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace MUC.DataAccess.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("integer");
@@ -54,7 +54,7 @@ namespace MUC.DataAccess.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("DateColumn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("ID");
 

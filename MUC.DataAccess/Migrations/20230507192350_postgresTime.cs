@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MUC.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class postsql : Migration
+    public partial class postgresTime : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -64,7 +64,7 @@ namespace MUC.DataAccess.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(65)", maxLength: 65, nullable: false),
                     DisplayOrder = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CreatedDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,7 +76,7 @@ namespace MUC.DataAccess.Migrations
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uuid", nullable: false),
-                    DateColumn = table.Column<DateOnly>(type: "date", nullable: false)
+                    DateColumn = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {

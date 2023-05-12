@@ -29,7 +29,7 @@ namespace MUC.DataAccess.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("integer");
@@ -51,7 +51,7 @@ namespace MUC.DataAccess.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("DateColumn")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("ID");
 

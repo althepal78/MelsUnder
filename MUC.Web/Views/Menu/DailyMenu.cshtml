@@ -1,32 +1,25 @@
-﻿@model Menu
-@{
-    if(Model != null)
-    {
-        <p> not null </p>
-    }
-}
-
-
+﻿@model  Menu
 <div class="main-section">
     @if (Model != null) {
         <p class="main-paragraph">
-            This is what we have for today! Todays Date is <span>@Model.DateColumn.ToString("MMMM dd, yyyy")</span>
+            This is what we have for today! Todays Date is <span>@DateTime.Now.ToString("MMMM dd, yyyy")</span>
         </p>
         <div>
             <div id="cards">
-                @foreach (var product in Model.ProductMenus) {
-                    if (product != null) {
+                @foreach (var producMenus in Model.ProductMenus) {
+                    if (producMenus != null) {
+
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-image">
-                                    <img src="@product.Product.ImgURL" alt="product.Product.Title">
+                                    <img src="@producMenus.Product.ImgURL" alt="@producMenus.Product.Title">
                                 </div>
                                 <div class="card-info-wrapper">
                                     <div class="card-info">
                                         <div class="card-info-title">
-                                            <h3 class="product-title">@product.Product.Title</h3>
-                                            <p class="description">@product.Product.Description</p>
-                                            <p><small class="text-info">by @product.Product.Author</small></p>
+                                            <h3 class="product-title">@producMenus.Product.Title </h3>
+                                            <p class="description"> @producMenus.Product.Description</p>
+                                            <p><small class="text-info">by @producMenus.Product.Author </small></p>
                                         </div>
                                     </div>
                                 </div>

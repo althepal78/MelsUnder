@@ -2,9 +2,22 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MUC.DataAccess.Data;
 using MUC.DataAccess.DbInitialzer;
-using MUC.Utilities;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Npgsql;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+// web application to get ready for linux server and db
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.KnownProxies.Add(IPAddress.Parse("190.92.151.142"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -50,6 +63,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.UseHttpsRedirection();
 }
 
 app.UseHttpsRedirection();
@@ -57,6 +71,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 SeedDatabase();
+
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();

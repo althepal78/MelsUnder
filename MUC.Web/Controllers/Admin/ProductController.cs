@@ -78,13 +78,13 @@ namespace MUC.Web.Controllers.Admin
                 if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(wwwRootPath, @"images\products");
+                    var uploads = Path.Combine(wwwRootPath, @"images/products");
                     var extension = Path.GetExtension(file.FileName);
                     using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
                         file.CopyTo(fileStreams);
                     }
-                    obj.Product.ImgURL = @"\images\products\" + fileName + extension;
+                    obj.Product.ImgURL = @"/images/products/" + fileName + extension;
                 }
            
 
@@ -132,7 +132,7 @@ namespace MUC.Web.Controllers.Admin
                 if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(wwwRootPath, @"images\products");
+                    var uploads = Path.Combine(wwwRootPath, @"images/products");
                     var extension = Path.GetExtension(file.FileName);
 
                     if (obj.Product.ImgURL != null)
@@ -147,7 +147,7 @@ namespace MUC.Web.Controllers.Admin
                     {
                         file.CopyTo(fileStreams);
                     }
-                    obj.Product.ImgURL = @"\images\products\" + fileName + extension;
+                    obj.Product.ImgURL = @"/images/products/" + fileName + extension;
                 }
                 if(file == null)
                 {

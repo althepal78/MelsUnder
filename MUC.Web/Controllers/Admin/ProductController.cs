@@ -184,6 +184,7 @@ namespace MUC.Web.Controllers.Admin
 
             }
             var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath, obj.ImgURL.TrimStart('\\'));
+            Console.WriteLine(oldImagePath + "******************************************");
             if (System.IO.File.Exists(oldImagePath))
             {
                 System.IO.File.Delete(oldImagePath);

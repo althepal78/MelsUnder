@@ -1,13 +1,17 @@
 ﻿@model Category
 
-<div class="details">
-   <div class="detail-type"> Category Details</div>
-    <div> Category Name: <span class="puerto-rico">@Model.Name</span>  </div>
-    <div> Your Display order is: <span class="puerto-rico"> @Model.DisplayOrder</span></div>
-    <a class="button glow-effect" style="width: 20rem;margin:0 auto;" asp-controller="Category" asp-action="Index">Back
-        <svg class="glow-container">
-            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-        </svg>
-    </a>
-</div>
+
+<section class="container mx-auto mt-8 pt-5">
+    <div class="max-w-md mx-auto bg-[var(--bg-color)] rounded-lg shadow-md shadow-[var(--accent)] p-6">
+       
+        <div class="mb-4 text-xl md:text-2xl p-4">
+            <div class="font-bold text-xl md:text-3xl mb-2 text-[var(--accent)]">Category Details</div>
+            <div class="mb-2 text-[var(--text-color)]">Category Name: <span class="font-bold text-[var(--accent)]">@Model.Name</span></div>
+            <div class="mb-2 text-[var(--text-color)]">Your Display order is: <span class="font-bold text-[var(--accent)]">@Model.DisplayOrder</span></div>
+        </div>
+        <a asp-controller="Category" asp-action="Index"
+           class="block rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+              duration-200 hover:border-[var(--accent)]
+              hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]">Back</a>
+    </div>
+</section>

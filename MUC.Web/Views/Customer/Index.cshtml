@@ -1,44 +1,46 @@
 ﻿@model IEnumerable<Product>
-<div class="main-section">
-    <p class="main-paragraph">
-        Welcome to Mely's Underground Cuisine. We will be working on a catering business soon.
-        For now these are some of the meals we make on random days. We also make sides like platanos,
-        in English plantains. Not only that we make coquito a <span> Puerto Rican </span>adult beverage. That is something
-        we sell on holidays of Thanksgiving, Christmas,  and new years. Here are some Meals we have created below.
+<div>
+    <p id="main-para" class="m-4 p-2 text-xl md:text-3xl">
+        <span class="pl-8">Welcome to Mely's Underground Cuisine!</span> We will
+        be working on a catering business soon. For now these are some of the
+        meals we make on random days. We also make sides like platanos, in English
+        plantains. Not only that we make coquito a
+        <span class="puerto-rico"> Puerto Rican </span>adult beverage. That is
+        something we sell on holidays of Thanksgiving, Christmas, and new years.
+        Here are some Meals we have created below.
     </p>
-    <br /> 
+    <br />
     @{
         @if (Model != null)
         {
-            <div>
-                <div  id="cards">
-                    @foreach (var meal in Model)
+            <section id="card"
+                     class="mx-auto mt-6 grid w-2/3 overflow-hidden rounded-lg bg-[var(--accent)] p-4 text-[var(--bg-color)] shadow-md md:w-3/5 md:grid-cols-2 md:gap-x-4">
+                @foreach (var meal in Model)
+                {
+                    if (meal != null)
                     {
-                        if (meal != null)
+                        @if (meal.Category.Name == "Meal")
                         {
-                            @if (meal.Category.Name == "Meal")
-                            {
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-image">
-                                            <img src="@meal.ImgURL" alt="@meal.Title">
-                                        </div>
-                                        <div class="card-info-wrapper">
-                                            <div class="card-info">
-                                                <div class="card-info-title">
-                                                    <h3 class="meal-title">@meal.Title</h3>
-                                                    <p class="description">@meal.Description</p>
-                                                    <p><small class="text-info">by @meal.Author</small></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div id="card-img">
+                                <img src="@meal.ImgURL" alt="@meal.Title class="h-auto w-full rounded-lg" />
+                            </div>
+                            <div id="card-information" class="flex flex-col justify-between overflow-wrap-break-word">
+                                <div>
+                                    <h2 class="mb-2 text-xl font-bold text-[var(--heading-accent)] md:text-3xl">
+                                        @meal.Title
+                                    </h2>
+                                    <p class="ml-2 overflow-wrap-break-all text-lg text-[var(--text-accent)] md:text-xl">
+                                        @meal.Description
+                                    </p>
                                 </div>
-                            }
+                                <div class="text-right text-base text-[var(--logo-pink)]">
+                                    <p>by @meal.Author</p>
+                                </div>
+                            </div>
                         }
                     }
-                </div>
-            </div>
+                }
+            </section>
         }
     }
 </div>

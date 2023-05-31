@@ -1,36 +1,42 @@
 ﻿@model Category
+<section class="container mx-auto mt-10">
+    <form class="max-w-md mx-auto bg-[var(--bg-color)] rounded-lg shadow-md shadow-[var(--accent)] p-6"
+          method="post" asp-action="Edit" asp-controller="Category">
+        <div class="border border-[var(--logo-pink)] bg-black text-xl md:text-2xl text-[var(--logo-pink)]" asp-validation-summary="All"></div>
 
-<form method="post" asp-action="Edit" asp-controller="Category">
-    <div>
-        <div>
-            <h2 class="title">Edit Category</h2>
-        </div> 
-        <div class="validation" asp-validation-summary="All"></div>
-        <br />
-        <div>
-            <label asp-for="Name"></label>
-            <input asp-for="Name" />
-        </div>
-        <div>
-            <label asp-for="DisplayOrder"></label>
-            <input asp-for="DisplayOrder" />
-        </div>
-        <br />
-        <button class="button glow-effect" type="submit">Update
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </button>
-        <a class="button glow-effect" asp-controller="Category" asp-action="Index">Back
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </a>
-    </div>
+        <h1 class="text-xl md:text-3xl lg:text-5xl mb-3 text-[var(--accent)]">
+            Edit Category
+        </h1>
 
-</form>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Name" for="Name">
+                Category Name
+            </label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                   asp-for="Name" id="Name" type="text" placeholder="Enter a category name.." />
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="DisplayOrder" for="DisplayOrder">Display Order</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
+                   asp-for="DisplayOrder" id="DisplayOrder" type="number" placeholder="Enter a display order number" />
+        </div>
+        <div class="flex justify-between">
+            <button class="w-2/5 rounded-md border bg-[var(--accent)]
+                           p-2 text-center text-2xl text-[var(--bg-color)] duration-200 hover:border-[var(--accent)]
+                           hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]" type="submit">
+                Edit
+
+            </button>
+            <a class="w-2/5 rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)]
+                      hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]" asp-controller="Category" asp-action="Index">
+                Back
+
+            </a>
+        </div>
+    </form>
+</section>
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />

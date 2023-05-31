@@ -1,59 +1,59 @@
 ﻿@model MUC.Models.ViewModels.ProductVM
+<section class="container mx-auto mt-10">
+    <form class="max-w-md mx-auto bg-[var(--bg-color)] rounded-lg shadow-md shadow-[var(--accent)] p-6" method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Product">
+        <div class="border border-[var(--logo-pink)] bg-black text-xl md:text-2xl text-[var(--logo-pink)]" asp-validation-summary="All"></div>
+        <input hidden asp-for="Product.Id" />
+        <div class="text-xl md:text-3xl lg:text-5xl mb-3 text-[var(--accent)]">Edit Product</div>
 
-<form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Product" class="form">
-    <div class="validation" asp-validation-summary="All"></div>
-    <input hidden asp-for="@Model.Product.Id" />
-    <div class="title">Update Product</div>
-    <div>
-        <input asp-for="@Model.Product.Title" id="Title" type="text" />
-        <label asp-for="@Model.Product.Title" for="Title">Product Name</label>
-    </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Product.Title" for="Title">Product Name</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" asp-for="Product.Title" id="Title" type="text" />
+        </div>
 
-    <div>
-        <input asp-for="@Model.Product.Description" id="Description" type="text" />
-        <label asp-for="@Model.Product.Description" for="Description">Description</label>
-    </div>
-    <div>
-        <input asp-for="@Model.Product.Author" id="Author" type="text" />
-        <label asp-for="@Model.Product.Author" for="Author">Author</label>
-    </div>
-    <div>
-        <input asp-for="@Model.Product.Price" id="Price" type="text" />
-        <label asp-for="@Model.Product.Price" for="Price">Price</label>
-    </div>
-    <div>
-        <input asp-for="@Model.Product.ImgURL" src="@Model.Product.ImgURL" name="file" type="file" />
-        <label asp-for="@Model.Product.ImgURL">Image</label>
-    </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Product.Description" for="Description">Description</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" asp-for="Product.Description" id="Description" type="text" />
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Product.Author" for="Author">Author</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" asp-for="Product.Author" id="Author" type="text" />
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Product.Price" for="Price">Price</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" asp-for="Product.Price" id="Price" type="number" />
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Product.ImgURL">Image</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" type="file" name="file" asp-for="Product.ImgURL" />
+        </div>
 
-    <div>
-        <label asp-for="@Model.Product.CategoryId"></label>
-        <select asp-for="@Model.Product.CategoryId" asp-items="@Model.CategoryList">
-            <option disabled selected>--Select Category</option>
-        </select>
-    </div>
-    <br />
-    <div>
-        <button type="submit" class="button glow-effect">
-            Update
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </button>
-        <a class="button glow-effect" asp-controller="Product" asp-action="Index">
-            Back
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </a>
-    </div>
-</form>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Product.Category.Name">Type</label>
+            <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" asp-for="Product.CategoryId" asp-items="@Model.CategoryList">
+                <option disabled selected>--Select Category</option>
+            </select>
+        </div>
+        <div class="flex justify-between">
+            <button class="w-2/5 rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)]
+                      hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]" type="submit">
+                Update
 
+            </button>
+            <a class="w-2/5 rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)]
+                      hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]" role="button" asp-controller="Product" asp-action="Index">
+                Back
+
+            </a>
+        </div>
+
+    </form>
+</section>
 
 @section Scripts{
     @{
+
         <partial name="_ValidationScriptsPartial" />
     }
-    }
+}

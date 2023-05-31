@@ -30,23 +30,55 @@ namespace MUC.DataAccess.DbInitialzer
                 _roleManager.CreateAsync(new IdentityRole(StaticDetails.Role_Admin)).GetAwaiter().GetResult();
 
                 //if roles ar not create, then create an admin user
-                _userManager.CreateAsync(new ApplicationUser
+               _userManager.CreateAsync(new ApplicationUser
                 {
-                    UserName = "papichulo@test.com",
-                    Email = "papichulo@test.com",
-                    Name = "papi chulo",
-                    PhoneNumber = "9787999999",
-                    StreetAddress = "my stree434",
-                    State = "FL",
-                    PostalCode = "33614",
-                    City = "Tampa"
-                }, "adminUSER78$$").GetAwaiter().GetResult();
+                    UserName = "Melysundergroundcuisine@gmail.com",
+                    Email = "Melysundergroundcuisine@gmail.com",
+                    Name = "Mely",
+                    PhoneNumber = "5089638048",
+                    StreetAddress = "16 Tracy Place",
+                    State = "MA",
+                    PostalCode = "01603",
+                    City = "Worcester"
+                }, "LoveToCook85$$").GetAwaiter().GetResult();
 
-                //   site name for now https://melysundergroundcusine.azurewebsites.net/
-
-
-                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "papichulo@test.com");
+                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "Melysundergroundcuisine@gmail.com");
                 _userManager.AddToRoleAsync(user, StaticDetails.Role_Admin).GetAwaiter().GetResult();
+
+                _userManager.CreateAsync(new ApplicationUser
+                
+                {
+                    UserName = "mister01610@yahoo.com",
+                    Email = "mister01610@yahoo.com",
+                    Name = "Jose",
+                    PhoneNumber = "5085586288",
+                    StreetAddress = "16 Tracy Place",
+                    State = "MA",
+                    PostalCode = "01603",
+                    City = "Worcester"
+                }, "LoveToCook77$$").GetAwaiter().GetResult();
+
+                ApplicationUser user2 = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "mister01610@yahoo.com");
+                _userManager.AddToRoleAsync(user2, StaticDetails.Role_Admin).GetAwaiter().GetResult();
+
+                _userManager.CreateAsync(new ApplicationUser
+
+                {
+                    UserName = "althepal78@gmail.com",
+                    Email = "althepal78@gmail.com",
+                    Name = "Jose",
+                    PhoneNumber = "9787993573",
+                    StreetAddress = "6433 Toledo Road",
+                    State = "FL",
+                    PostalCode = "34606",
+                    City = "Worcester"
+                }, "adminUser78$$").GetAwaiter().GetResult();
+
+                //    
+
+
+                ApplicationUser user3 = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "althepal78@gmail.com");
+                _userManager.AddToRoleAsync(user3, StaticDetails.Role_Admin).GetAwaiter().GetResult();
             }
             return;
         }

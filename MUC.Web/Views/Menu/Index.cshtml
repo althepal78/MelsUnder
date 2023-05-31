@@ -1,24 +1,27 @@
 ﻿@model List<Product>
-<div class="menu-container">
-    <p> Menu Creator </p>
+<section class="container w-full mx-auto mt-10">
+    <p class="text-xl md:text-3xl lg:text-5xl text-[var(--accent)] text-center"> Menu Creator </p>
     @{
-        @if (Model != null) {
-            @foreach (var product in Model) {
-                if (product != null) {
-                    <div class="grid-container">
+        @if (Model != null)
+        {
+            @foreach (var product in Model)
+            {
+                if (product != null)
+                {
+                    <div class="max-w-md mt-6 mb-8 mx-auto bg-[var(--bg-color)] rounded-lg shadow-md shadow-[var(--accent)] p-6">
+                        <img src="@product.ImgURL" alt="Product Image" class="w-full mb-4">
+                        <div class="mb-4">
+                            <div class="font-bold mb-2 text-[var(--accent)]">Product Details</div>
+                            <div class="text-[var(--text-color)]">Produt Title: <span class="font-bold text-[var(--accent)]">@product.Title</span></div>
+                            <div class="text-[var(--text-color)]">Produt Price: <span class="font-bold text-[var(--accent)]">@product.Price.ToString("C")</span></div>
+                            <div class="text-[var(--text-color)] mb-4">Produt Description: <span class="font-bold text-[var(--accent)]">@product.Description</span></div>
 
-                        <div class="menu-image">
-                            <img src="@product.ImgURL" />
-                        </div>
-
-                        <div class="title-description">
-                            <p>Product name:  @product.Title</p>
-                            <a class="button glow-effect" asp-controller="Menu" asp-action="Create" asp-route-pid="@product.Id">
+                            <a class="block rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                                      duration-200 hover:border-[var(--accent)]
+                                      hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]" 
+                             asp-controller="Menu" asp-action="Create" asp-route-pid="@product.Id">
                                 Add to Menu
-                                <svg class="glow-container">
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
+
                             </a>
 
                         </div>
@@ -28,5 +31,5 @@
 
         }
     }
-</div>
+</section>
 

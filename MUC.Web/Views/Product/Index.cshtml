@@ -1,69 +1,55 @@
 ﻿@model List<Product>
 
-<div class="centerdiv">
+<section class="w-full text-center p-3 mx-auto">
     <div>
-        <div class="heading-items">
-            <h2>Product List</h2>
-        
-            <a class="button glow-effect" asp-controller="Product" asp-action="Create">Create New Product
-                <svg class="glow-container">
-                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                </svg>
+        <div class="p-2">
+            <h1 class="text-xl my-5 py-2 md:text-3xl lg:text-5xl text-[var(--accent)]">
+                Product List
+            </h1>
+
+            <a class="w-2/5 my-4 rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                                          duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2
+                                          hover:text-[var(--accent)]"
+               asp-controller="Product" asp-action="Create">
+                Create New Product
             </a>
         </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null)
-            {
-                @foreach (var obj in Model)
+    <section class="overflow-x-auto mt-6">
+        <table class="mx-auto w-full md:w-8/12 table-auto">
+            <thead>
+                <tr class="text-[var(--accent)] md:text-3xl">
+                    <th class="px-4 py-2">Title</th>
+                    <th class="px-4 py-2">Price</th>
+                    <th class="px-4 py-2">Author</th>
+                    <th class="px-4 py-2">Category</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-xl border border-[var(--accent)] text-[var(--accent)] md:text-2xl">
+                @if (Model != null)
                 {
-                    <tr>
-                        <td>
-                            <a class="button glow-effect" asp-controller="Product" asp-action="Details" asp-route-id="@obj.Id">
-                                @obj.Title
-                                <svg class="glow-container">
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
-                            </a>
-                        </td>
-                        <td>@obj.Price.ToString("C")</td>
-                        <td>
-                            @obj.Author
-                        </td>
-                        <td>@obj.Category.Name</td>
-                        <td>
-                            <div role="group">
-                               
-                                <a class="button glow-effect" asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id">  Edit
-                                    <svg class="glow-container">
-                                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                    </svg>
-                                </a>
-                                <a class="button glow-effect" asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"> Delete
-                                    <svg class="glow-container">
-                                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                    </svg>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach (var obj in Model)
+                    {
+                        <tr class="hover:text-[var(--bg-color)] border border-[var(--accent)] hover:bg-[var(--accent)]">
+                            <td class="px-4 text-left py-2">
+                                <a asp-controller="Product" asp-action="Details" asp-route-id="@obj.Id" class="text-sm md:text-base lg:text-xl">@obj.Title</a>
+                            </td>
+                            <td class="px-4 py-2">@obj.Price.ToString("C")</td>
+                            <td class="px-4 py-2">@obj.Author</td>
+                            <td class="px-4 py-2">@obj.Category.Name</td>
+                            <td class="px-4 py-2">
+                                <div class="flex gap-2 justify-center">
+                                    <a class="rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)] duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)] text-sm md:text-xl" asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                                    <a class="rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)] duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)] text-sm md:text-xl" asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </section>
+</section>
+
 

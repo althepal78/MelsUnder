@@ -1,65 +1,57 @@
 ﻿@model IEnumerable<Category>
 
-<div class="centerdiv" >
+<section class="w-full text-center p-3 mx-auto">
     <div>
-        <div class="heading-items">
-            <h2>Category List</h2>
+        <div class="p-2">
+            <h1 class="text-xl my-5 py-2 md:text-3xl lg:text-5xl text-[var(--accent)]">Category List</h1>
             <a asp-controller="Category"
                asp-action="Create"
-               class="button glow-effect">
+               class="w-2/5 my-4 rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                                          duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2
+                                          hover:text-[var(--accent)]">
                 Create New Category
-                <svg class="glow-container">
-                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                </svg>
+
             </a>
         </div>
 
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Category Name</th>
-                <th>Display Order</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var obj in Model)
-            {
-                <tr>
-                    <td>
-                        <a class="button glow-effect" asp-controller="Category" asp-action="Details" asp-route-id="@obj.Id">
-                            @obj.Name
-                            <svg class="glow-container">
-                                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                            </svg>
-                        </a>
-                    </td>
-                    <td>
-                        @obj.DisplayOrder
-                    </td>
-                    <td>
-                        <div class="edit-delete">
-                            <a class="button glow-effect" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
-                                Edit
-                                <svg class="glow-container">
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
-                            </a>
-                            <a class="button glow-effect" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">
-                                Delete
-                                <svg class="glow-container">
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                                </svg>
-                            </a>
-                        </div>
-                    </td>
+    <section class="overflow-x-auto mt-6">
+        <table class="mx-auto w-full md:w-8/12 table-auto">
+            <thead>
+            <thead class="">
+                <tr class="text-[var(--accent)] md:text-3xl">
+                    <th class="px-4 py-2">Category Name</th>
+                    <th class="px-4 py-2">Display Order</th>
+                    <th class="px-4 py-2">Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody class="text-xl border border-[var(--accent)] text-[var(--accent)] md:text-2xl">
+                    @foreach (var obj in Model)
+                    {
+                    <tr class="border border-[var(--accent)] hover:border-[var(--logo-pink)]
+                               cursor-pointer hover:bg-[var(--accent)] hover:text-[var(--bg-color)]">
+                        <td class="px-4 text-left py-2">
+                            <a class="text-sm md:text-base lg:text-xl" asp-controller="Category" asp-action="Details" asp-route-id="@obj.Id">
+                                    @obj.Name
+
+                            </a>
+                        </td>
+                        <td class="px-4 py-2">
+                                @obj.DisplayOrder
+                        </td>
+                        <td class="px-4 py-2">
+                            <div class="flex gap-2 justify-center">
+                                <a class="rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)] duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)] text-sm md:text-xl" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
+                                    Edit
+                                </a>
+                                <a class="rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)] duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)] text-sm md:text-xl" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">
+                                    Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </section>
+</section>

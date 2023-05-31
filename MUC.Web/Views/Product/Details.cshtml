@@ -1,18 +1,20 @@
 ﻿@model Product
 
-<div class="details">
-    <div class="detail-type">Product Title  </div>
-    <div>Author: <span class="puerto-rico">@Model.Author</span>  </div> 
-    <div>Price: <span class="puerto-rico">@Model.Price.ToString("C")</span>  </div>
-    <div>Product Name: <span class="puerto-rico">@Model.Title</span>  </div>
-    <div>Category: <span class="puerto-rico">@Model.Category.Name</span>  </div>
-    <div> Description: <span class="puerto-rico">  @Model.Description</span> </div>
-    <img src="@Model.ImgURL" style="width:30%;" />
-    <br />
-    <a class="button glow-effect" asp-controller="Product" asp-action="Index"> back
-        <svg class="glow-container">
-            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-        </svg>
-    </a>
-</div>
+<section class="container mx-auto mt-8 pt-5">
+    <div class="max-w-md mx-auto bg-[var(--bg-color)] rounded-lg shadow-md shadow-[var(--accent)] p-6">
+        <img src="@Model.ImgURL" alt="Product Image" class="w-full mb-4">
+        <div class="mb-4">
+            <div class="font-bold mb-2 text-[var(--accent)]">Product Details</div>
+            <div class="text-[var(--text-color)]">Author: <span class="font-bold text-[var(--accent)]">@Model.Author</span></div>
+            <div class="text-[var(--text-color)]">Price: <span class="font-bold text-[var(--accent)]">@Model.Price.ToString("C")</span></div>
+            <div class="text-[var(--text-color)]">Product Name: <span class="font-bold text-[var(--accent)]">@Model.Title</span></div>
+            <div class="text-[var(--text-color)]">Category: <span class="font-bold text-[var(--accent)]">@Model.Category.Name</span></div>
+            <div class="text-[var(--text-color)]">Description: <span class="font-bold text-[var(--accent)]">@Model.Description</span></div>
+        </div>
+        <a href="/Product/Index"
+           class="block rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+              duration-200 hover:border-[var(--accent)]
+              hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]">Back</a>
+    </div>
+</section>
+

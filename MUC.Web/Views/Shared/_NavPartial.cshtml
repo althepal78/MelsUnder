@@ -2,86 +2,165 @@
 @using MUC.Utilities
 @inject IHttpContextAccessor HttpContextAccessor
 
-@*the nav is on the layout so we in the nav and class navbar*@
+@*the header is on the layout so we in the nav and class navbar*@
+<header class="sticky top-0">
+    <section data-main-div
+             class=" flex w-full min-w-full items-center justify-between border-b-4
+                    border-[var(--accent)] bg-[var(--bg-color)] p-3">
 
-<nav class="navbar">
-    <img class="nav-branding" src="/images/melysSmallLogo.jpg" alt="brand-logo" aria-label="Mellys Brand" />
+        <img class="ml-14 w-40 rounded-full" src="/images/melysSmallLogo.jpg" alt="brand-logo" aria-label="Mellys Brand" />
 
-    <ul class="nav-menu">
-        <li class="nav-item">
-            <a class="glow-effect nav-link" asp-controller="Customer"
-               asp-action="Index">
-                Home
-                <svg class="glow-container">
-                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                </svg>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="glow-effect nav-link" asp-controller="Menu"
-               asp-action="DailyMenu">
-                Daily Menu
-                <svg class="glow-container">
-                    <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                    <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                </svg>
-            </a>
-        </li>
-        @if (User.IsInRole(StaticDetails.Role_Admin))
-        {
+        <button data-hamburger-button class="text-5xl text-[var(--accent)] md:hidden">
+            ☰
+        </button>
 
-            <li class="nav-item dd">
-                <div class="drop-down-menu" data-dropdown-menu>
-                    <button id="dropdown-button" data-dropdown-button>Dashboard &#11143;</button>
-                    <div class="drop-down-links" data-dropdown-links>
-                        <a asp-controller="Category" asp-action="Index">
-                            Category
+        <nav class="mr-10 hidden md:block ">
+            <div class="w-100 flex items-center gap-5 align-middle text-xl text-[var(--accent)] md:text-2xl lg:text-4xl">
+
+                <a class="hover:rounded-md p-2 text-center text-xl md:text-2xl lg:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2"
+                   asp-controller="Customer"
+                   asp-action="Index">
+                    Home
+                </a>
+
+                <a class="hover:rounded-md p-2 text-center text-xl md:text-2xl lg:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2"
+                    asp-controller="Menu"
+                   asp-action="DailyMenu">
+                    Daily Menu
+                </a>
+
+                @if (User.IsInRole(StaticDetails.Role_Admin))
+                {
+                    <div class="drop-down-menu cursor-pointer relative" data-dropdown-menu>
+                        <a class="bg-[var(--accent)] text-xl md:text-2xl lg:text-4xl rounded-lg text-[var(--bg-color)] border hover:border hover:border-[var(--logo-pink)] p-1" id="dropdown-button" data-dropdown-button>
+                            Dashboard &#11143;
                         </a>
 
-                        <a asp-controller="Product" asp-action="Index">
-                            Food/Drinks
-                        </a>
+                        <div class="drop-down-links absolute bg-[var(--bg-color)]
+                                        p-2 mt-4 mb-4 pb-4 left-0 top-full z-10 gap-2
+                                        shadow-lg shadow-[var(--accent)] md:hidden"
+                             data-dropdown-links>
 
-                        <a asp-controller="Menu" asp-action="Index">
-                            Menu Creater
-                        </a>
+                            <a class="hover:rounded-md m-2 hover:m-2 p-2 text-center text-xl md:text-2xl hover:text-[var(--bg-color)]
+                                      duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2" asp-controller="Category" asp-action="Index">
+                                Category
+                            </a><br />
+
+                            <a class="hover:rounded-md m-2 hover:m-2 p-2 text-center text-xl md:text-2xl hover:text-[var(--bg-color)]
+                                      duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2" asp-controller="Product" asp-action="Index">
+                                Food/Drinks
+                            </a><br />
+
+                            <a class="hover:rounded-md m-2 hover:m-2 p-2 text-center text-xl md:text-2xl hover:text-[var(--bg-color)]
+                                      duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2" asp-controller="Menu" asp-action="Index">
+                                Menu Creater
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </li>
 
-            <li class="nav-item">
-                <!-- this is the logout -->
-                <a class="glow-effect nav-link" data-logout asp-controller="Login"
-                   asp-action="Logout">
-                    Log Out
-                    <svg class="glow-container">
-                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                    </svg>
-                </a>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item">
-                <a class="glow-effect nav-link" asp-controller="Login"
-                   asp-action="Login">
-                    Login
-                    <svg class="glow-container">
-                        <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                        <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-                    </svg>
-                </a>
-            </li>
-        }
-    </ul>
 
-    <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </div>
 
-</nav>
+                    <!-- this is the logout -->
+                    <a class="hover:rounded-md p-2 text-center text-xl md:text-2xl lg:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2"
+                        data-logout asp-controller="Login"
+                       asp-action="Logout">
+                        Log Out
+                    </a>
+
+                }
+                else
+                {
+
+                    <a class="hover:rounded-md p-2 text-center text-xl md:text-2xl lg:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2"
+                        asp-controller="Login" asp-action="Login">
+                        Login
+                    </a>
+
+                }
+
+            </div>
+
+        </nav>
+    </section>
+    <!--  end of main navigation -->
+    <section class="hidden min-h-screen bg-[var(--bg-color)] justify-center"
+             data-mobileNav
+             id="mobile-div">
+        <nav class="flex mt-4 flex-col gap-8">
+            <ul class="w-100 align-middle  text-2xl">
+                <li class="m-2">
+                    <a class="hover:rounded-md p-2 text-center text-xl md:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2" asp-controller="Customer"
+                       asp-action="Index">
+                        Home
+                    </a>
+                </li>
+                <li class="m-2">
+                    <aclass class="hover:rounded-md p-2  text-center text-xl md:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2" asp-controller="Menu"
+                       asp-action="DailyMenu">
+                        Daily Menu
+                    </aclass>
+                </li>
+                @if (User.IsInRole(StaticDetails.Role_Admin))
+                {
+
+                    <li class="m-2">
+                        <div class="ml-2 text-xl border border-[var(--accent)] mt-2 mb-2 p-2 ">
+
+                            <p class="border-b-4 border-[var(--accent)] text-2xl"> Dashboard &#11143;</p>
+
+
+                            <div class="md:hidden flex flex-col ">
+                                <a class="hover:rounded-md p-1 rounded-md md:text-2xl hover:text-[var(--bg-color)]
+                                       duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-1"
+                                   asp-controller="Category"
+                                   asp-action="Index">
+                                    Category
+                                </a>
+
+                                <a class="hover:rounded-md p-1 rounded-md md:text-2xl hover:text-[var(--bg-color)]
+                                       duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-1"
+                                   asp-controller="Product"
+                                   asp-action="Index">
+                                    Food/Drinks
+                                </a>
+
+                                <a class="hover:rounded-md p-1 rounded-md md:text-2xl hover:text-[var(--bg-color)]
+                                       duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-1"
+                                   asp-controller="Menu"
+                                   asp-action="Index">
+                                    Menu Creater
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="m-2">
+                        <!-- this is the logout -->
+                        <a class="hover:rounded-md p-2 text-center text-xl md:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2" data-logout asp-controller="Login"
+                           asp-action="Logout">
+                            
+                            Log Out
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="m-2">
+                        <a class="hover:rounded-md p-2 text-center text-xl md:text-4xl hover:text-[var(--bg-color)]
+                         duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:p-2"  asp-controller="Login" asp-action="Login">
+                            Login
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </section>
+</header>
 <!-- end nav container-->

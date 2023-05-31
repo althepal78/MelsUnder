@@ -72,7 +72,7 @@ namespace MUC.Web.Controllers.Admin
         public IActionResult Create(MenuVM vm)
         {
             vm.OneProduct = _db.Products.FirstOrDefault(p => p.Id == vm.ProductId);
-
+            Console.WriteLine(vm.ProductId);
             if (!ModelState.IsValid)
             {
                 return View(vm);
@@ -122,7 +122,7 @@ namespace MUC.Web.Controllers.Admin
         {
             Menu deleteIt = _db.Menus.Include(p => p.ProductMenus)
                 .FirstOrDefault(d => d.DateColumn == date);
-
+            Console.WriteLine(pid);
             if (deleteIt != null)
             {
                 foreach (var item in deleteIt.ProductMenus.ToList())

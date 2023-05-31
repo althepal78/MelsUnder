@@ -1,80 +1,84 @@
 ﻿@model MUC.Models.ViewModels.MenuVM;
 
-<form asp-controller="Menu" asp-action="Create">
-    <div asp-validation-summary="All"></div>
-    <div class="title">Menu Information</div>
-    <input hidden asp-for="ProductId" />
+<section class="container mx-auto mt-10">
+    <form class="max-w-md mx-auto bg-[var(--bg-color)] rounded-lg shadow-md shadow-[var(--accent)] p-6" asp-controller="Menu" asp-action="Create">
+        <div asp-validation-summary="All"></div>
+        <div class="mb-6">
+            <div class="text-xl md:text-3xl lg:text-5xl mb-3 text-[var(--accent)]">  Menu Information</div>
 
-    <input asp-for="DateColumn" type="date" id="inputDate" value='@DateTime.UtcNow.ToString("yyyy-MM-dd")' />
-    @if (Model.OneProduct != null)
-    {
-        <img src="@Model.OneProduct.ImgURL" />
-        <h4>@Model.OneProduct.Title</h4>
+            @if (Model.OneProduct != null)
+            {
+                <div class="mb-4">
+                    <img src="@Model.OneProduct.ImgURL" class="w-full h-auto rounded-lg mb-2" />
+                    <div class="text-lg font-semibold">Product Title: <span class="puerto-rico text-2xl">@Model.OneProduct.Title</span> </div>
+                </div>
+                <script >
 
-        <script type="text/javascript">
-            function loadFunction() {
-                let myDateListJson = '@Html.Raw(ViewBag.Dates)';
-                let inputDate = document.getElementById("inputDate"); 
-                let createIt = document.querySelectorAll("[data-create]");
-                const id = '@Model.ProductId';
-                const url = createIt[0].href;
-                console.log(url)
-                let myDateList = JSON.parse(myDateListJson).map((dateStr) => {
-                  
-                    if (inputDate.value == dateStr) {
-                        createIt[0].ariaHidden = "false";
-                        createIt[1].ariaHidden = "true";
-                        createIt[0].href += `&date=${dateStr}`;                       
+                    function loadFunction() {
+                        let myDateListJson = '@Html.Raw(ViewBag.Dates)';
+                        let inputDate = document.getElementById("inputDate");
+                        let createIt = document.querySelectorAll("[data-create]");
+                        const id = '@Model.ProductId';
+                        const url = createIt[0].href;
+
+                        let myDateList = JSON.parse(myDateListJson).map((dateStr) => {
+                            
+                            if (inputDate.value === dateStr) {
+                                console.log(createIt[0].ariaHidden)
+                                createIt[0].setAttribute("aria-hidden", "false");
+                                console.log(createIt[0].ariaHidden)
+                                createIt[1].setAttribute("aria-hidden", "true");
+                                createIt[0].setAttribute("href", createIt[0].getAttribute("href") + `&date=${dateStr}`);
+                            }
+                            inputDate.addEventListener('change', (event) => {
+                                console.log("Input date value:", inputDate.value); // Add this line
+                                if (inputDate.value === dateStr) {
+                                    console.log(createIt[0].ariaHidden)
+                                    createIt[0].setAttribute("aria-hidden", "false");
+                                    console.log(createIt[0].ariaHidden)
+                                    console.log(createIt[1].ariaHidden)
+                                    createIt[1].setAttribute("aria-hidden", "true");
+                                    console.log(createIt[1].ariaHidden)
+                                    createIt[0].setAttribute("href", createIt[0].getAttribute("href") + `&date=${dateStr}`);
+                                  
+                                } else if (inputDate.value !== dateStr) {
+                                 
+                                    createIt[0].setAttribute("aria-hidden", "true");
+                                    createIt[1].setAttribute("aria-hidden", "false");
+                                }
+                            });
+                            return new Date(dateStr);
+                        });
+                        
                     }
-                    inputDate.addEventListener('change', (event) => {
-                        if (inputDate.value == dateStr) {
-                            createIt[0].ariaHidden = "false";
-                            createIt[1].ariaHidden = "true";
-                            createIt[0].href += `&date=${dateStr}`;
-                            console.log(inputDate.value);
-                        } else if (inputDate.value != dateStr) {
-                            createIt[0].ariaHidden = "true";
-                            createIt[1].ariaHidden = "false"
-                        }
-                    })
-                    return new Date(dateStr);
-                });
+                    window.onload = loadFunction;
+                </script>
             }
-            window.onload = loadFunction;
-        </script>
-    }
-    <div class="button-group">
-        {
-        <a asp-action="Delete" asp-controller="Menu" asp-route-pid="@Model.ProductId" 
-           aria-hidden="true" data-create="delete" class="button glow-effect">
-            Delete from Menu
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </a>
-        <button aria-hidden="false" data-create="create" class="button glow-effect" type="submit">
-            Add to Menu
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </button>
-        }
-
-        <a role="button" class="button glow-effect" asp-action="Index" asp-controller="Menu">
-            Back
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </a>
-    </div>
-</form>
+            <input hidden asp-for="ProductId" />
+            <input asp-for="DateColumn" type="date" id="inputDate" value='@DateTime.UtcNow.ToString("yyyy-MM-dd")' />
+        </div>
+        <div class="flex justify-center items-center gap-3 button-group w-full">
+            <a asp-action="Delete" asp-controller="Menu" asp-route-pid="@Model.ProductId" aria-hidden="true" data-create="delete"
+               class="w-1/2 rounded-md border bg-[var(--accent)] p-2 text-xl text-center  text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]">
+                Delete from Menu
+            </a>
+            <button aria-hidden="false" data-create="create" type="submit"
+            class="w-2/5 rounded-md border bg-[var(--accent)] p-2 text-center text-xl text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]">
+                Add to Menu
+            </button>
+            <a role="button" asp-action="Index" asp-controller="Menu"
+               class="w-2/5 rounded-md border bg-[var(--accent)] p-2 text-center items-center text-middle text-xl text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)] hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]">
+                Back
+            </a>
+        </div>
+    </form>
+</section>
 
 @section Scripts{
     @{
-
         <partial name="_ValidationScriptsPartial" />
     }
 }

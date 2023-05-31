@@ -1,0 +1,63 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap");
+
+:root {
+    /*    // colors --background: #d9d9d4;*/
+    --bg-color: #d9d9d4;
+    --accent: #005b60;
+    --puerto-rico: linear-gradient(to right, #f81313 50%, #c3c3c3 0.2%, #2730ff);
+    --heading-accent: #f9570c;
+    --text-accent: #c1cf00;
+    /*    // the pink from the logo --h3: #ffdc4a; */
+    --logo-pink: #ff9ff6;
+    /*    // brand colors*/
+    --facebook: #1092f4;
+    --instagram: linear-gradient( #405de6, #5b51d8, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80 );
+    --tiktok: linear-gradient(to right, #010101, #69c9d0, #fff, #ee1d52);
+}
+/*
+    this is how you do the linear colors for the font to have different colors  and what I am using for the footer's custom brand logos 
+
+// -webkit-text-fill-color: transparent;
+// color: transparent;
+// background: $instagram-color;
+// -webkit-background-clip: text;*/
+
+.fa-facebook {
+    color: var(--facebook);
+}
+
+
+.fa-instagram {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    background: var(--instagram);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.fa-tiktok {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    background: var(--tiktok);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.contact a:has(.fa-facebook, .fa-instagram, .fa-tiktok):hover {
+    background-color: var(--logo-pink);
+}
+
+.puerto-rico {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    background: var(--puerto-rico);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+form .button-group [aria-hidden=true] {
+    display: none;
+}
+.overflow-wrap-break-all {
+    overflow-wrap: break-all;
+}

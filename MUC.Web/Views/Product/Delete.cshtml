@@ -1,39 +1,41 @@
 ﻿@model Product
+<section class="container mx-auto mt-10">
+    <form class="max-w-md mx-auto bg-[var(--bg-color)] rounded-lg shadow-md shadow-[var(--accent)] p-6" method="post" enctype="multipart/form-data" asp-action="Delete" asp-controller="Product">
+        <div class="border border-[var(--logo-pink)] bg-black text-xl md:text-2xl text-[var(--logo-pink)]" asp-validation-summary="All"></div>
+        <input hidden asp-for="Id" />
+        <div class="text-xl md:text-3xl lg:text-5xl mb-3 text-[var(--accent)]">Delete Product</div>
 
-<form method="post" asp-action="DeleteProduct">
-    <input hidden asp-for="Id" />
-    <div class="val" asp-validation-summary="All"></div>
-    <div>
-        <div>
-            <h2>Delete Product</h2>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Title" for="Title">Product Name</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" asp-for="Title" id="Title" type="text" />
         </div>
         
-        <div>
-            <label asp-for="Title"></label>
-            <input asp-for="Title" />
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" asp-for="Price" for="Price">Price</label>
+            <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" asp-for="Price" id="Price" type="number" />
         </div>
-        <div>
-            <label asp-for="Price"></label>
-            <input asp-for="Price" />
-        </div>
-        <br />
-        <button class="button glow-effect" type="submit">Delete
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </button>
-        <a class="button glow-effect" asp-controller="Product" asp-action="Index">Back
-            <svg class="glow-container">
-                <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
-                <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
-            </svg>
-        </a>
-    </div>
+ 
+        <div class="flex justify-between">
+            <button class="w-2/5 rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)]
+                      hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]" type="submit">
+                Delete
 
-</form>
+            </button>
+            <a class="w-2/5 rounded-md border bg-[var(--accent)] p-2 text-center text-2xl text-[var(--bg-color)]
+                      duration-200 hover:border-[var(--accent)]
+                      hover:bg-[var(--bg-color)] hover:p-2 hover:text-[var(--accent)]" role="button" asp-controller="Product" asp-action="Index">
+                Back
+
+            </a>
+        </div>
+
+    </form>
+</section>
+
 @section Scripts{
     @{
+
         <partial name="_ValidationScriptsPartial" />
     }
-    }
+}
